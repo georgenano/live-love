@@ -2,9 +2,9 @@
 <appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
 	<application>live-love</application>
 	<version>1</version>
-	
+
 	<precompilation-enabled>true</precompilation-enabled>
-	
+
 	<system-properties>
 	    <property name="slim3.hotReloading" value="true"/>
 	    <!--
@@ -14,6 +14,6 @@
         -->
 	    <property name="java.util.logging.config.file" value="WEB-INF/classes/logging.properties"/>
 	</system-properties>
-	<sessions-enabled>false</sessions-enabled>
+	<sessions-enabled>true</sessions-enabled>
 	<threadsafe>true</threadsafe>
 </appengine-web-app>

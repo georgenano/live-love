@@ -7,7 +7,8 @@
 <title>LoginForm</title>
 </head>
 <body>
-	<p><a href="/login?openid_identifier=https://mixi.jp/&continue=${continue}">Mixiでログイン</a></p>
-	<p><a href="/login?openid_identifier=https://www.google.com/accounts/o8/id&continue=${continue}">Googleでログイン</a></p>
+	<p><a href="/openIdLogin?openid_identifier=https://mixi.jp/&continue=${continue}">Mixiでログイン</a></p>
+	<p><a href="/openIdLogin?openid_identifier=https://www.google.com/accounts/o8/id&continue=${continue}">Googleでログイン</a></p>
+	<p><a href="/twitterLogin?continue=${continue}">Twitterでログイン</a></p>
 </body>
 </html>

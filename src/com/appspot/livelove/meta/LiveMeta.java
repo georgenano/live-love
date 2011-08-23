@@ -1,6 +1,6 @@
 package com.appspot.livelove.meta;
 
-//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2011-08-22 21:16:02")
+//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2011-08-23 15:18:09")
 /** */
 public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.livelove.model.Live> {
 
@@ -23,7 +23,7 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
     public final org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.util.Date> lastUpdateDate = new org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.util.Date>(this, "lastUpdateDate", "lastUpdateDate", java.util.Date.class);
 
     /** */
-    public final org.slim3.datastore.StringAttributeMeta<com.appspot.livelove.model.Live> lastUpdateUser = new org.slim3.datastore.StringAttributeMeta<com.appspot.livelove.model.Live>(this, "lastUpdateUser", "lastUpdateUser");
+    public final org.slim3.datastore.ModelRefAttributeMeta<com.appspot.livelove.model.Live, org.slim3.datastore.ModelRef<com.appspot.livelove.model.UserAccount>, com.appspot.livelove.model.UserAccount> lastUpdateUserAccountRef = new org.slim3.datastore.ModelRefAttributeMeta<com.appspot.livelove.model.Live, org.slim3.datastore.ModelRef<com.appspot.livelove.model.UserAccount>, com.appspot.livelove.model.UserAccount>(this, "lastUpdateUserAccountRef", "lastUpdateUserAccountRef", org.slim3.datastore.ModelRef.class, com.appspot.livelove.model.UserAccount.class);
 
     /** */
     public final org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.util.Date> liveEndDate = new org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.util.Date>(this, "liveEndDate", "liveEndDate", java.util.Date.class);
@@ -50,7 +50,7 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
     public final org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.util.Date> registDate = new org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.util.Date>(this, "registDate", "registDate", java.util.Date.class);
 
     /** */
-    public final org.slim3.datastore.StringAttributeMeta<com.appspot.livelove.model.Live> registUser = new org.slim3.datastore.StringAttributeMeta<com.appspot.livelove.model.Live>(this, "registUser", "registUser");
+    public final org.slim3.datastore.ModelRefAttributeMeta<com.appspot.livelove.model.Live, org.slim3.datastore.ModelRef<com.appspot.livelove.model.UserAccount>, com.appspot.livelove.model.UserAccount> registUserAccountRef = new org.slim3.datastore.ModelRefAttributeMeta<com.appspot.livelove.model.Live, org.slim3.datastore.ModelRef<com.appspot.livelove.model.UserAccount>, com.appspot.livelove.model.UserAccount>(this, "registUserAccountRef", "registUserAccountRef", org.slim3.datastore.ModelRef.class, com.appspot.livelove.model.UserAccount.class);
 
     /** */
     public final org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Integer> todayCharge = new org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Integer>(this, "todayCharge", "todayCharge", int.class);
@@ -81,7 +81,10 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
         model.setDeleted(booleanToPrimitiveBoolean((java.lang.Boolean) entity.getProperty("deleted")));
         model.setKey(entity.getKey());
         model.setLastUpdateDate((java.util.Date) entity.getProperty("lastUpdateDate"));
-        model.setLastUpdateUser((java.lang.String) entity.getProperty("lastUpdateUser"));
+        if (model.getLastUpdateUserAccountRef() == null) {
+            throw new NullPointerException("The property(lastUpdateUserAccountRef) is null.");
+        }
+        model.getLastUpdateUserAccountRef().setKey((com.google.appengine.api.datastore.Key) entity.getProperty("lastUpdateUserAccountRef"));
         model.setLiveEndDate((java.util.Date) entity.getProperty("liveEndDate"));
         model.setLiveName((java.lang.String) entity.getProperty("liveName"));
         model.setLiveOpenDate((java.util.Date) entity.getProperty("liveOpenDate"));
@@ -90,7 +93,10 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
         model.setNote((java.lang.String) entity.getProperty("note"));
         model.setPref(longToPrimitiveInt((java.lang.Long) entity.getProperty("pref")));
         model.setRegistDate((java.util.Date) entity.getProperty("registDate"));
-        model.setRegistUser((java.lang.String) entity.getProperty("registUser"));
+        if (model.getRegistUserAccountRef() == null) {
+            throw new NullPointerException("The property(registUserAccountRef) is null.");
+        }
+        model.getRegistUserAccountRef().setKey((com.google.appengine.api.datastore.Key) entity.getProperty("registUserAccountRef"));
         model.setTodayCharge(longToPrimitiveInt((java.lang.Long) entity.getProperty("todayCharge")));
         model.setVersion((java.lang.Long) entity.getProperty("version"));
         return model;
@@ -110,7 +116,10 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
         entity.setProperty("includeDrink", m.getIncludeDrink());
         entity.setProperty("deleted", m.isDeleted());
         entity.setProperty("lastUpdateDate", m.getLastUpdateDate());
-        entity.setProperty("lastUpdateUser", m.getLastUpdateUser());
+        if (m.getLastUpdateUserAccountRef() == null) {
+            throw new NullPointerException("The property(lastUpdateUserAccountRef) must not be null.");
+        }
+        entity.setProperty("lastUpdateUserAccountRef", m.getLastUpdateUserAccountRef().getKey());
         entity.setProperty("liveEndDate", m.getLiveEndDate());
         entity.setProperty("liveName", m.getLiveName());
         entity.setProperty("liveOpenDate", m.getLiveOpenDate());
@@ -119,7 +128,10 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
         entity.setProperty("note", m.getNote());
         entity.setProperty("pref", m.getPref());
         entity.setProperty("registDate", m.getRegistDate());
-        entity.setProperty("registUser", m.getRegistUser());
+        if (m.getRegistUserAccountRef() == null) {
+            throw new NullPointerException("The property(registUserAccountRef) must not be null.");
+        }
+        entity.setProperty("registUserAccountRef", m.getRegistUserAccountRef().getKey());
         entity.setProperty("todayCharge", m.getTodayCharge());
         entity.setProperty("version", m.getVersion());
         entity.setProperty("slim3.schemaVersion", 1);
@@ -147,6 +159,15 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
 
     @Override
     protected void assignKeyToModelRefIfNecessary(com.google.appengine.api.datastore.AsyncDatastoreService ds, java.lang.Object model) {
+        com.appspot.livelove.model.Live m = (com.appspot.livelove.model.Live) model;
+        if (m.getLastUpdateUserAccountRef() == null) {
+            throw new NullPointerException("The property(lastUpdateUserAccountRef) must not be null.");
+        }
+        m.getLastUpdateUserAccountRef().assignKeyIfNecessary(ds);
+        if (m.getRegistUserAccountRef() == null) {
+            throw new NullPointerException("The property(registUserAccountRef) must not be null.");
+        }
+        m.getRegistUserAccountRef().assignKeyIfNecessary(ds);
     }
 
     @Override
@@ -202,9 +223,9 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
             writer.setNextPropertyName("lastUpdateDate");
             encoder0.encode(writer, m.getLastUpdateDate());
         }
-        if(m.getLastUpdateUser() != null){
-            writer.setNextPropertyName("lastUpdateUser");
-            encoder0.encode(writer, m.getLastUpdateUser());
+        if(m.getLastUpdateUserAccountRef() != null && m.getLastUpdateUserAccountRef().getKey() != null){
+            writer.setNextPropertyName("lastUpdateUserAccountRef");
+            encoder0.encode(writer, m.getLastUpdateUserAccountRef(), maxDepth, currentDepth);
         }
         if(m.getLiveEndDate() != null){
             writer.setNextPropertyName("liveEndDate");
@@ -236,9 +257,9 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
             writer.setNextPropertyName("registDate");
             encoder0.encode(writer, m.getRegistDate());
         }
-        if(m.getRegistUser() != null){
-            writer.setNextPropertyName("registUser");
-            encoder0.encode(writer, m.getRegistUser());
+        if(m.getRegistUserAccountRef() != null && m.getRegistUserAccountRef().getKey() != null){
+            writer.setNextPropertyName("registUserAccountRef");
+            encoder0.encode(writer, m.getRegistUserAccountRef(), maxDepth, currentDepth);
         }
         writer.setNextPropertyName("todayCharge");
         encoder0.encode(writer, m.getTodayCharge());
@@ -281,8 +302,8 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
         m.setKey(decoder0.decode(reader, m.getKey()));
         reader = rootReader.newObjectReader("lastUpdateDate");
         m.setLastUpdateDate(decoder0.decode(reader, m.getLastUpdateDate()));
-        reader = rootReader.newObjectReader("lastUpdateUser");
-        m.setLastUpdateUser(decoder0.decode(reader, m.getLastUpdateUser()));
+        reader = rootReader.newObjectReader("lastUpdateUserAccountRef");
+        decoder0.decode(reader, m.getLastUpdateUserAccountRef(), maxDepth, currentDepth);
         reader = rootReader.newObjectReader("liveEndDate");
         m.setLiveEndDate(decoder0.decode(reader, m.getLiveEndDate()));
         reader = rootReader.newObjectReader("liveName");
@@ -299,8 +320,8 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
         m.setPref(decoder0.decode(reader, m.getPref()));
         reader = rootReader.newObjectReader("registDate");
         m.setRegistDate(decoder0.decode(reader, m.getRegistDate()));
-        reader = rootReader.newObjectReader("registUser");
-        m.setRegistUser(decoder0.decode(reader, m.getRegistUser()));
+        reader = rootReader.newObjectReader("registUserAccountRef");
+        decoder0.decode(reader, m.getRegistUserAccountRef(), maxDepth, currentDepth);
         reader = rootReader.newObjectReader("todayCharge");
         m.setTodayCharge(decoder0.decode(reader, m.getTodayCharge()));
         reader = rootReader.newObjectReader("version");

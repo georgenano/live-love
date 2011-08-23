@@ -15,7 +15,7 @@ public class RegistLiveReportControllerTest extends ControllerTestCase {
     public void run() throws Exception {
         tester.param("content", "hello");
         tester.start("/livelove/registLiveReport");
-        RegistLiveReportController controller = tester.getController();
+        RegistLiveController controller = tester.getController();
         assertThat(controller, is(notNullValue()));
         assertThat(tester.isRedirect(), is(true));
         assertThat(tester.getDestinationPath(), is("/livelove/"));

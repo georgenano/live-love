@@ -8,6 +8,7 @@ import com.google.appengine.api.datastore.Key;
 
 import org.slim3.datastore.Attribute;
 import org.slim3.datastore.Model;
+import org.slim3.datastore.ModelRef;
 
 @Model(schemaVersion = 1)
 public class Live implements Serializable {
@@ -42,13 +43,15 @@ public class Live implements Serializable {
 
     private String note;
 
-    private String registUser;
+    private ModelRef<UserAccount> registUserAccountRef =
+        new ModelRef<UserAccount>(UserAccount.class);
 
     private Date registDate;
 
     private Date lastUpdateDate;
 
-    private String lastUpdateUser;
+    private ModelRef<UserAccount> lastUpdateUserAccountRef =
+            new ModelRef<UserAccount>(UserAccount.class);
 
     private boolean isDeleted;
 
@@ -178,12 +181,8 @@ public class Live implements Serializable {
         this.note = note;
     }
 
-    public String getRegistUser() {
-        return registUser;
-    }
-
-    public void setRegistUser(String registUser) {
-        this.registUser = registUser;
+    public ModelRef<UserAccount> getRegistUserAccountRef() {
+        return registUserAccountRef;
     }
 
     public Date getRegistDate() {
@@ -202,12 +201,8 @@ public class Live implements Serializable {
         this.lastUpdateDate = lastUpdateDate;
     }
 
-    public String getLastUpdateUser() {
-        return lastUpdateUser;
-    }
-
-    public void setLastUpdateUser(String lastUpdateUser) {
-        this.lastUpdateUser = lastUpdateUser;
+    public ModelRef<UserAccount> getLastUpdateUserAccountRef() {
+        return lastUpdateUserAccountRef;
     }
 
     public boolean isDeleted() {
@@ -247,4 +242,6 @@ public class Live implements Serializable {
         }
         return true;
     }
+
+
 }

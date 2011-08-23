@@ -7,10 +7,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>ライブラブ 〜Live Love〜 Index</title>
+<title>ユーザ情報初期登録 - ライブラブ 〜Live Love〜</title>
 </head>
 <body>
-	<p>ライブラブ index</p>
-	<a href="${f:url('livelove/')}">ログイン</a>
+	<p>ユーザ情報初期登録 - ライブラブ 〜Live Love〜</p>
+	${f:h(e.userAccount)}
+	${f:h(e.continue)}
+	<a href="${f:url('/registInitUserAccount')}">ユーザ情報初期登録</a>
 </body>
 </html>

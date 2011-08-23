@@ -16,6 +16,11 @@
 	</context-param>
 
 	<filter>
+		<filter-name>LoginCheckFilter</filter-name>
+		<filter-class>com.appspot.livelove.filter.LoginCheckFilter
+		</filter-class>
+	</filter>
+	<filter>
 		<filter-name>HotReloadingFilter</filter-name>
 		<filter-class>org.slim3.controller.HotReloadingFilter</filter-class>
 	</filter>
@@ -28,6 +33,11 @@
 		<filter-class>org.slim3.controller.FrontController</filter-class>
 	</filter>
 
+	<filter-mapping>
+		<filter-name>LoginCheckFilter</filter-name>
+		<url-pattern>/livelove/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
 	<filter-mapping>
 		<filter-name>HotReloadingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
@@ -57,22 +67,6 @@
 	<!-- <servlet> <servlet-name>GWTServiceServlet</servlet-name> <servlet-class>org.slim3.gwt.server.rpc.GWTServiceServlet</servlet-class>
 		<load-on-startup>1</load-on-startup> </servlet> -->
 
-	<servlet>
-		<servlet-name>KtrWjrServiceServlet</servlet-name>
-		<servlet-class>bufferings.ktr.wjr.server.service.KtrWjrServiceServlet
-		</servlet-class>
-	</servlet>
-
-	<servlet>
-		<servlet-name>LoginFormServlet</servlet-name>
-		<servlet-class>com.appspot.livelove.servlet.LoginFormServlet</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>LoginFormServlet</servlet-name>
-		<url-pattern>/_ah/login_required</url-pattern>
-	</servlet-mapping>
-
 	<servlet-mapping>
 		<servlet-name>GlobalTransactionServlet</servlet-name>
 		<url-pattern>/slim3/gtx</url-pattern>
@@ -81,40 +75,4 @@
 	<!-- <servlet-mapping> <servlet-name>GWTServiceServlet</servlet-name> <url-pattern>*.s3gwt</url-pattern>
 		</servlet-mapping> -->
 
-	<servlet-mapping>
-		<servlet-name>KtrWjrServiceServlet</servlet-name>
-		<url-pattern>/ktrwjr/ktrwjr/ktrwjr.s3gwt</url-pattern>
-	</servlet-mapping>
-
-	<security-constraint>
-		<web-resource-collection>
-			<url-pattern>/livelove/*</url-pattern>
-		</web-resource-collection>
-		<auth-constraint>
-			<role-name>*</role-name>
-		</auth-constraint>
-	</security-constraint>
-	<security-constraint>
-		<web-resource-collection>
-			<url-pattern>*.jsp</url-pattern>
-		</web-resource-collection>
-		<auth-constraint>
-		</auth-constraint>
-	</security-constraint>
-	<security-constraint>
-		<web-resource-collection>
-			<url-pattern>/slim3/gtx</url-pattern>
-		</web-resource-collection>
-		<auth-constraint>
-			<role-name>admin</role-name>
-		</auth-constraint>
-	</security-constraint>
-	<security-constraint>
-		<web-resource-collection>
-			<url-pattern>/ktrwjr/*</url-pattern>
-		</web-resource-collection>
-		<auth-constraint>
-			<role-name>admin</role-name>
-		</auth-constraint>
-	</security-constraint>
 </web-app>

@@ -7,7 +7,7 @@ import static org.hamcrest.CoreMatchers.*;
 
 public class UserTest extends AppEngineTestCase {
 
-    private User model = new User();
+    private UserAccount model = new UserAccount();
 
     @Test
     public void test() throws Exception {

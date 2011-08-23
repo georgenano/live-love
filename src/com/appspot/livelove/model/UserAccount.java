@@ -6,10 +6,11 @@ import java.util.Date;
 import com.google.appengine.api.datastore.Key;
 
 import org.slim3.datastore.Attribute;
+import org.slim3.datastore.InverseModelListRef;
 import org.slim3.datastore.Model;
 
 @Model(schemaVersion = 1)
-public class User implements Serializable {
+public class UserAccount implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -21,9 +22,16 @@ public class User implements Serializable {
 
     private String userId;
 
+    private String accountType;
+
     private String nickname;
 
     private String mail;
+
+    private Date lastLoginDate;
+
+    @Attribute(persistent = false)
+    private InverseModelListRef<Live, UserAccount> liveListRef;
 
     private Date registDate;
 
@@ -77,6 +85,14 @@ public class User implements Serializable {
         this.userId = userId;
     }
 
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
+    }
+
     public String getNickname() {
         return nickname;
     }
@@ -91,6 +107,18 @@ public class User implements Serializable {
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    public Date getLastLoginDate() {
+        return lastLoginDate;
+    }
+
+    public void setLastLoginDate(Date lastLoginDate) {
+        this.lastLoginDate = lastLoginDate;
+    }
+
+    public InverseModelListRef<Live, UserAccount> getLiveListRef() {
+        return liveListRef;
     }
 
     public Date getRegistDate() {
@@ -136,7 +164,7 @@ public class User implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        User other = (User) obj;
+        UserAccount other = (UserAccount) obj;
         if (key == null) {
             if (other.key != null) {
                 return false;
