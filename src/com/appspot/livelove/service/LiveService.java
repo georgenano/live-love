@@ -17,6 +17,7 @@ import org.slim3.util.BeanUtil;
 import com.appspot.livelove.meta.LiveMeta;
 import com.appspot.livelove.model.Live;
 import com.appspot.livelove.model.UserAccount;
+import com.google.appengine.api.datastore.Key;
 
 public class LiveService {
 
@@ -81,10 +82,37 @@ public class LiveService {
                     .query(lm)
                     .filter(
                         lm.liveOpenDate.greaterThanOrEqual(startDate),
-                        lm.liveOpenDate.lessThan(endDate))
+                        lm.liveOpenDate.lessThan(endDate),
+                        lm.deleted.equal(false))
                     .asList());
         }
         return dailyLiveMap;
+    }
+
+    public Live getLiveDetail(Key key){
+        return Datastore.get(lm, key);
+    }
+
+    public boolean deleteLive(Key key, UserAccount ua){
+        Live target = Datastore.get(lm, key);
+        if(target.getRegistUserAccountRef().getModel().equals(ua)){
+            target.setLastUpdateDate(new Date());
+            target.getLastUpdateUserAccountRef().setModel(ua);
+            target.setDeleted(true);
+            Datastore.put(target);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean isEditableUser(Key key, UserAccount ua){
+        Live target = Datastore.get(lm, key);
+        if(target.getRegistUserAccountRef().getModel().equals(ua)){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private static Date string2date(String value) {

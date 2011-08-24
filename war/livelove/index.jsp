@@ -13,7 +13,7 @@
 	<p>
 		<a href="/logout">ログアウト</a>
 	</p>
-	<a href="${f:url('viewRegistLive')}">ライブレポート登録</a>
+	<a href="${f:url('viewRegistLive')}">ライブ情報登録</a>
 
 	<table>
 		<tr>
@@ -42,9 +42,9 @@
 					<td class="event"><c:set var="day" value="${7*j+i}" /> <c:if
 							test="${fstDay < day && day <= dayMax+fstDay}">
 							<c:set var="targetDay" value="${day-fstDay}" />
-							<fmt:formatNumber value="${targetDay-1}" pattern="#" var="key" />
+							<fmt:formatNumber value="${targetDay}" pattern="#" var="key" />
 							<c:forEach var="live" items="${dailyLiveMap[key]}">
-								${f:h(live.note)}
+								<a href="viewLiveDetail?key=${f:h(live.key)}">${f:h(live.liveName)}</a><br />
 							</c:forEach>
 						</c:if>
 					</td>
