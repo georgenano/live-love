@@ -20,7 +20,15 @@
 				</tr>
 				<c:set var="fstDay" value="${firstDay-2}" />
 				<c:set var="dayMax" value="${dayMaximum}" />
-				<c:forEach begin="0" end="5" var="j">
+				<c:choose>
+					<c:when test="${dayMax-28+fstDay<7}">
+						<c:set var="weekMax" value="4" />
+					</c:when>
+					<c:otherwise>
+						<c:set var="weekMax" value="5" />
+					</c:otherwise>
+				</c:choose>
+				<c:forEach begin="0" end="${weekMax}" var="j">
 					<tr>
 						<c:forEach begin="1" end="7" var="i">
 							<td class="day"><c:set var="day" value="${7*j+i}" /> <c:if

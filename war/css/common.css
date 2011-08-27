@@ -85,6 +85,14 @@
 	width: 100%;
 }
 
+#footer ul {
+	list-style: none outside;
+}
+
+#footer li {
+	text-align: center;
+}
+
 .clearfix:after {
 	content: ".";
 	clear: both;
