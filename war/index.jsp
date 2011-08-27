@@ -5,6 +5,7 @@
 <c:import url="/layout/layout.jsp">
   <c:param name="title" value="ライブラブ〜Live Love〜"/>
   <c:param name="content">
+  	<p>ライブカレンダー共有サイトです！</p>
     <a href="${f:url('livelove/')}">ログイン</a>
   </c:param>
 </c:import>

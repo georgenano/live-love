@@ -6,8 +6,13 @@
 <c:import url="/layout/layout.jsp">
 	<c:param name="title" value="[ライブラブ〜Live Love〜] Home" />
 	<c:param name="content">
-		<a href="${f:url('viewRegistLive')}">ライブ情報登録</a>
 		<div id="calendar">
+			<ul class="clearfix">
+				<li><a href="/livelove/?year=${prevYear}&month=${prevMonth}">&lt;</a></li>
+				<li>${thisYear}年${thisMonth}月</li>
+				<li><a href="/livelove/?year=${nextYear}&month=${nextMonth}">&gt;</a></li>
+			</ul>
+
 			<table>
 				<tr>
 					<th>Mon</th>
@@ -18,10 +23,20 @@
 					<th>Sat</th>
 					<th>Sun</th>
 				</tr>
-				<c:set var="fstDay" value="${firstDay-2}" />
+				<c:choose>
+					<c:when test="${firstDay<2}">
+						<c:set var="fstDay" value="${firstDay+5}" />
+					</c:when>
+					<c:otherwise>
+						<c:set var="fstDay" value="${firstDay-2}" />
+					</c:otherwise>
+				</c:choose>
 				<c:set var="dayMax" value="${dayMaximum}" />
 				<c:choose>
-					<c:when test="${dayMax-28+fstDay<7}">
+					<c:when test="${dayMax-28+fstDay==0}">
+						<c:set var="weekMax" value="3" />
+					</c:when>
+					<c:when test="${dayMax-28+fstDay<=7}">
 						<c:set var="weekMax" value="4" />
 					</c:when>
 					<c:otherwise>
@@ -34,8 +49,7 @@
 							<td class="day"><c:set var="day" value="${7*j+i}" /> <c:if
 									test="${fstDay < day && day <= dayMax+fstDay}">
 									<c:out value="${day-fstDay}" />
-								</c:if>
-							</td>
+								</c:if></td>
 						</c:forEach>
 					</tr>
 					<tr>
@@ -48,12 +62,12 @@
 										<a href="viewLiveDetail?key=${f:h(live.key)}">${f:h(live.liveName)}</a>
 										<br />
 									</c:forEach>
-								</c:if>
-							</td>
+								</c:if></td>
 						</c:forEach>
 					</tr>
 				</c:forEach>
 			</table>
 		</div>
+		<a href="${f:url('viewRegistLive')}">ライブ情報登録</a>
 	</c:param>
 </c:import>

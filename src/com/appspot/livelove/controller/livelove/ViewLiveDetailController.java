@@ -16,9 +16,12 @@ public class ViewLiveDetailController extends Controller {
 
     @Override
     public Navigation run() throws Exception {
+        // live情報の設定
         Key key = asKey("key");
         Live live = service.getLiveDetail(key);
         requestScope("live", live);
+
+        // 変更可能ユーザの設定
         HttpSession sess = request.getSession();
         UserAccount ua = (UserAccount) sess.getAttribute("userAccount");
         requestScope("isEditableUser", service.isEditableUser(key, ua));
