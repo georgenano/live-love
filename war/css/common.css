@@ -1,0 +1,94 @@
+* {
+	font-size: 12px;
+	font-weight: normal;
+	letter-spacing: 1px;
+	line-height: 120%;
+	color: #333333;
+}
+
+#header {
+	width: 100%;
+}
+
+#header ul {
+	list-style: none outside;
+	display: block;
+}
+
+#header li {
+	float: left;
+	width: 120px;
+	height: 20px;
+	text-align: center;
+}
+
+#menu ul {
+	list-style: none outside;
+	display: block;
+}
+
+#menu li {
+	float: left;
+	width: 120px;
+	height: 20px;
+	text-align: center;
+}
+
+#body {
+	width: 600px;
+	height: 400px;
+	float: left;
+}
+
+#calendar table {
+	width: 700px;
+	hight: 20px;
+	border-top: 1px #333333 solid;
+	border-left: 1px #333333 solid;
+	border-collapse: collapse;
+}
+
+#calendar th {
+	width: 100px;
+	height: 20px;
+	border-right: 1px #333333 solid;
+	border-bottom: 1px #333333 solid;
+	background-color: #0099CC;
+}
+
+#calendar td {
+	width: 100px;
+	border-right: 1px #333333 solid;
+	border-bottom: 1px #333333 solid;
+}
+
+#calendar td.day {
+	height: 20px;
+	background-color: #E7E7E7;
+}
+
+#calendar td.event {
+	height: 80px;
+	background-color: #FFFFFF;
+}
+
+#footer {
+	clear: both;
+	position: absolute;
+	width: 100%;
+	height: 110px;
+	margin: 0px auto;
+	padding-top: 80px;
+	text-align: center;
+	bottom: 0px;
+	height: 30px;
+	width: 100%;
+}
+
+.clearfix:after {
+	content: ".";
+	clear: both;
+	display: block;
+	visibility: hidden;
+	height: 0;
+}
