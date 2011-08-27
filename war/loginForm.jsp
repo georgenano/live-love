@@ -1,14 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=Shift_JIS"
-	pageEncoding="Shift_JIS"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<title>LoginForm</title>
-</head>
-<body>
-	<p><a href="/openIdLogin?openid_identifier=https://mixi.jp/&continue=${continue}">Mixiでログイン</a></p>
-	<p><a href="/openIdLogin?openid_identifier=https://www.google.com/accounts/o8/id&continue=${continue}">Googleでログイン</a></p>
-	<p><a href="/twitterLogin?continue=${continue}">Twitterでログイン</a></p>
-</body>
-</html>
+<%@page pageEncoding="UTF-8" contentType="text/html" isELIgnored="false"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="f" uri="http://www.slim3.org/functions"%>
+
+<c:import url="/layout/layout.jsp">
+  <c:param name="title" value="[繝ｩ繧､繝悶Λ繝悶廰ive Love縲彎 繝ｭ繧ｰ繧､繝ｳ"/>
+  <c:param name="content">
+	<p><a href="/openIdLogin?openid_identifier=https://mixi.jp/&continue=${continue}">Mixi縺ｧ繝ｭ繧ｰ繧､繝ｳ</a></p>
+	<p><a href="/openIdLogin?openid_identifier=https://www.google.com/accounts/o8/id&continue=${continue}">Google縺ｧ繝ｭ繧ｰ繧､繝ｳ</a></p>
+	<p><a href="/twitterLogin?continue=${continue}">Twitter縺ｧ繝ｭ繧ｰ繧､繝ｳ</a></p>
+  </c:param>
+</c:import>

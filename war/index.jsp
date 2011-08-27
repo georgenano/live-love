@@ -1,16 +1,10 @@
-<%@page pageEncoding="UTF-8" isELIgnored="false" session="false"%>
+<%@page pageEncoding="UTF-8" contentType="text/html" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@taglib prefix="f" uri="http://www.slim3.org/functions"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>ライブラブ 〜Live Love〜 Index</title>
-</head>
-<body>
-	<p>ライブラブ index</p>
-	<a href="${f:url('livelove/')}">ログイン</a>
-</body>
-</html>
+<c:import url="/layout/layout.jsp">
+  <c:param name="title" value="ライブラブ〜Live Love〜"/>
+  <c:param name="content">
+    <a href="${f:url('livelove/')}">ログイン</a>
+  </c:param>
+</c:import>
