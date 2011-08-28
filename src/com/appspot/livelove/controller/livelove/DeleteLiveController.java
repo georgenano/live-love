@@ -18,7 +18,10 @@ public class DeleteLiveController extends Controller {
         Key key = asKey("key");
         HttpSession sess = request.getSession();
         UserAccount ua = (UserAccount) sess.getAttribute("userAccount");
-        service.deleteLive(key, ua);
-        return redirect(basePath);
+        if(service.isEditableUser(key, ua)){
+            service.deleteLive(key, ua);
+            return redirect(basePath);
+        }
+        return forward("/error");
     }
 }

@@ -6,6 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
 <head>
 <title>${param.title}</title>
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
 </head>
 <body>
 	<div id="container">

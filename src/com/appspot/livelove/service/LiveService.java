@@ -2,14 +2,11 @@ package com.appspot.livelove.service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.slim3.datastore.Datastore;
 import org.slim3.util.BeanUtil;

@@ -7,25 +7,66 @@
 <c:import url="/layout/layout.jsp">
 	<c:param name="title" value="[ライブラブ〜Live Love〜] ライブ情報登録" />
 	<c:param name="content">
-		<form method="post" action="registLive">
+		<script language="JavaScript">
+		<!--
+		function FormCheck(Form) {
+			Error = new Array();
+			i = 0;
+			textCheck(Form["liveName"], "ライブ名");
+			textCheck(Form["artistList"], "出演アーティスト");
+			listCheck(Form["pref"], "地域");
+			listCheck(Form["start_year"], "開催年");
+			listCheck(Form["start_month"], "開催月");
+			listCheck(Form["start_day"], "開催日");
+			listCheck(Form["start_hour"], "開演時間（時）");
+			listCheck(Form["start_time"], "開演時間（分）");
+			// 未入力があればアラート
+			if (Error.length > 0) {
+				ErrorText = Error.join("\n");
+				alert ("不備があるので送信できません。\n\n"+ErrorText);
+				return false;
+			}
+		}
+
+		function textCheck(Text, jname){
+			if ((Text) && (Text.value == "")) {
+				Error[i] = jname + "は必須項目です。";
+				Text.style.backgroundColor = '#ffcc66';
+				i++;
+			} else {
+				Text.style.backgroundColor = '#ffffff';
+			}
+		}
+
+		function listCheck(List, jname){
+			if ((List) && (List[0].selected == true)) {
+				Error[i] = jname + "は必須項目です。";
+				List.style.backgroundColor = '#ffcc66';
+				i++;
+			} else {
+				List.style.backgroundColor = '#ffffff';
+			}
+		}
+		// -->
+		</script>
+
+		<form method="post" action="registLive"
+			onSubmit="return FormCheck(this)">
 			<div id="detail">
 				<table summary="ライブ情報記入フォーム">
 					<tr>
-						<th><label for="liveName">ライブ名</label><span>※</span>
-						</th>
+						<th><label for="liveName">ライブ名</label><span>※</span></th>
 						<td><input type="text" name="liveName" id="liveName" value=""
-							size="60" class="required" title="入力してください" />
-						</td>
+							size="60" class="required" title="入力してください" /></td>
 					</tr>
 					<tr>
-						<th><label for="artistList">出演アーティスト</label><span>※</span>
-						</th>
+						<th><label for="artistList">出演アーティスト</label><span>※</span></th>
 						<td><input type="text" name="artistList" id="artistList"
-							value="" size="60" class="required" title="入力してください" />
-						</td>
+							value="" size="60" class="required" title="入力してください" /></td>
 					</tr>
 					<tr>
-						<th>地域<span>※</span></th>
+						<th>地域<span>※</span>
+						</th>
 						<td><select name="pref" style="">
 								<option value="" selected="selected">地域を選択</option>
 								<option label="北海道" value="1">北海道</option>
@@ -75,18 +116,16 @@
 								<option label="宮崎県" value="45">宮崎県</option>
 								<option label="鹿児島県" value="46">鹿児島県</option>
 								<option label="沖縄県" value="47">沖縄県</option>
-						</select></td>
-					</tr>
-					<tr>
-						<th><label for="livePlace">ライブ会場</label>
-						</th>
-						<td><input type="text" name="livePlace" id="livePlace"
-							value="" size="60" class="required" title="入力してください" />
+						</select>
 						</td>
 					</tr>
 					<tr>
-						<th><label for="start_year">開催日</label><span>※</span>
-						</th>
+						<th><label for="livePlace">ライブ会場</label></th>
+						<td><input type="text" name="livePlace" id="livePlace"
+							value="" size="60" class="required" title="入力してください" /></td>
+					</tr>
+					<tr>
+						<th><label for="start_year">開催日</label><span>※</span></th>
 						<td><select name="start_year" style="">
 								<option value="" selected="selected">--</option>
 								<option label="2010" value="2010">2010</option>
@@ -103,7 +142,6 @@
 										</c:when>
 										<c:otherwise>
 											<option label="${month}" value="${month}">${month}</option>
-
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
@@ -137,7 +175,8 @@
 						</select>分
 					</tr>
 					<tr>
-						<th>開演時間<span>※</span></th>
+						<th>開演時間<span>※</span>
+						</th>
 						<td><select name="start_hour" style="">
 								<option value="" selected="selected">--</option>
 								<c:forEach begin="0" end="23" var="hour">
@@ -160,21 +199,17 @@
 								<option label="15" value="15">15</option>
 								<option label="30" value="30">30</option>
 								<option label="45" value="45">45</option>
-						</select>
-						</td>
+						</select></td>
 					</tr>
 					<tr>
-						<th><label for="charge">料金</label>
-						</th>
+						<th><label for="charge">料金</label></th>
 						<td>前売 ￥<input type="text" name="advanceCharge" id="charge"
 							value="" size="20" class="required" title="入力してください" /><br />
 							当日 ￥<input type="text" name="todayCharge" id="charge" value=""
-							size="20" class="required" title="入力してください" />
-						</td>
+							size="20" class="required" title="入力してください" /></td>
 					</tr>
 					<tr>
-						<th><label for="note">説明</label>
-						</th>
+						<th><label for="note">説明</label></th>
 						<td><textarea name="note" id="note" rows="7" cols="46"></textarea>
 						</td>
 					</tr>
