@@ -7,12 +7,11 @@
 	<c:param name="title" value="[ライブラブ〜Live Love〜] Home" />
 	<c:param name="content">
 		<div id="calendar">
-			<ul class="clearfix">
-				<li><a href="/livelove/?year=${prevYear}&month=${prevMonth}">&lt;</a></li>
-				<li>${thisYear}年${thisMonth}月</li>
-				<li><a href="/livelove/?year=${nextYear}&month=${nextMonth}">&gt;</a></li>
-			</ul>
-
+			<div id="calendar_title">
+				<a href="/livelove/?year=${prevYear}&month=${prevMonth}">&lt;</a>
+				${thisYear}年${thisMonth}月 <a
+					href="/livelove/?year=${nextYear}&month=${nextMonth}">&gt;</a>
+			</div>
 			<table>
 				<tr>
 					<th>Mon</th>
@@ -49,7 +48,8 @@
 							<td class="day"><c:set var="day" value="${7*j+i}" /> <c:if
 									test="${fstDay < day && day <= dayMax+fstDay}">
 									<c:out value="${day-fstDay}" />
-								</c:if></td>
+								</c:if>
+							</td>
 						</c:forEach>
 					</tr>
 					<tr>
@@ -58,11 +58,14 @@
 									test="${fstDay < day && day < dayMax+fstDay}">
 									<c:set var="targetDay" value="${day-fstDay}" />
 									<fmt:formatNumber value="${targetDay}" pattern="#" var="key" />
-									<c:forEach var="live" items="${dailyLiveMap[key]}">
-										<a href="viewLiveDetail?key=${f:h(live.key)}">${f:h(live.liveName)}</a>
-										<br />
-									</c:forEach>
-								</c:if></td>
+									<ul class="clearfix">
+										<c:forEach var="live" items="${dailyLiveMap[key]}">
+											<li><a href="viewLiveDetail?key=${f:h(live.key)}">${f:h(live.liveName)}</a>
+											</li>
+										</c:forEach>
+									</ul>
+								</c:if>
+							</td>
 						</c:forEach>
 					</tr>
 				</c:forEach>

@@ -6,57 +6,88 @@
 }
 
 #container {
-	width: 90%;
+	width: 95%;
 	margin: 0px auto;
 	position: relative;
 	min-height: 100%;
 }
 
+/* ------------------------------
+ header
+------------------------------ */
 #header {
+	margin: 0px;
+	padding: 0px;
 }
 
 #header ul {
 	list-style: none outside;
 	display: block;
+	margin: 0px;
+	padding: 0px;
 }
 
 #header li {
 	float: left;
 	width: 120px;
 	height: 20px;
+	margin: 0px;
+	padding: 0px;
 	text-align: center;
 	border: 1px #333333 solid;
+}
+
+/* ------------------------------
+ menu
+------------------------------ */
+#menu {
+	margin: 0px;
+	padding: 0px;
 }
 
 #menu ul {
 	list-style: none outside;
 	width: 1000px;
 	display: block;
+	margin: 0px;
+	padding: 0px;
 }
 
 #menu li {
 	float: left;
 	width: 120px;
 	height: 20px;
+	margin: 0px;
+	padding: 0px;
 	text-align: center;
 	border: 1px #333333 solid;
 }
 
+/* ------------------------------
+ main
+------------------------------ */
 #main {
+	margin-top: 40px;
+	margin-bottom: 100px;
 	padding-bottom: 30px;
 }
 
+/* ------------------------------
+ calendar
+------------------------------ */
 #calendar ul {
 	list-style: none;
+	margin: 0px;
+	padding: 0px;
 }
 
 #calendar li {
-	float: left;
+	margin: 0px;
+	padding: 0px;
 }
 
 #calendar table {
 	width: 1000px;
-	hight: 20px;
 	border-top: 1px #333333 solid;
 	border-left: 1px #333333 solid;
 	border-collapse: collapse;
@@ -84,8 +115,31 @@
 #calendar td.event {
 	height: 80px;
 	background-color: #FFFFFF;
+	vertical-align: top;
 }
 
+/* ------------------------------
+ detail
+------------------------------ */
+#detail table {
+	border-collapse: collapse;
+}
+
+#detail th {
+	width: 120px;
+	border-bottom: 1px #333333 dashed;
+	text-align: right;
+	color: #0099CC;
+}
+
+#detail td {
+	width: 300px;
+	border-bottom: 1px #333333 dashed;
+}
+
+/* ------------------------------
+ footer
+------------------------------ */
 #footer {
 	clear: both;
 	position: absolute;
