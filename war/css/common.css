@@ -126,9 +126,13 @@
 }
 
 #detail th {
-	width: 120px;
+	width: 150px;
 	border-bottom: 1px #333333 dashed;
 	text-align: right;
+	color: #0099CC;
+}
+
+#detail th label {
 	color: #0099CC;
 }
 
