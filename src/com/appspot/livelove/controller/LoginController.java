@@ -54,8 +54,13 @@ public class LoginController extends Controller {
             ua = new UserAccount();
             ua.setUserId(userId);
             ua.setAccountType(accountType);
-
             sessionScope("userAccount", ua);
+
+            String _continue = asString("continue");
+            if (StringUtils.isBlank(_continue)) {
+                _continue = "/";
+            }
+            sessionScope("continue", _continue);
             return forward("/viewInitUserRegist");
         } else {
             // ‰‰ñƒƒOƒCƒ“ˆÈŠO

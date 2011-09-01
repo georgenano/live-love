@@ -11,7 +11,6 @@
 			Error = new Array();
 			i = 0;
 			textCheck(Form["nickname"], "ニックネーム");
-			textCheck(Form["mail"], "メールアドレス");
 			// 未入力があればアラート
 			if (Error.length > 0) {
 				ErrorText = Error.join("\n");
@@ -19,7 +18,6 @@
 				return false;
 			}
 		}
-
 		function textCheck(Text, jname){
 			if ((Text) && (Text.value == "")) {
 				Error[i] = jname + "は必須項目です。";
@@ -29,7 +27,6 @@
 				Text.style.backgroundColor = '#ffffff';
 			}
 		}
-
 		function listCheck(List, jname){
 			if ((List) && (List[0].selected == true)) {
 				Error[i] = jname + "は必須項目です。";
@@ -41,23 +38,19 @@
 		}
 		</script>
 
-		<form method="post" action="initUserRegist"
+		<form method="post" action="/initUserRegist?continue=${continue}"
 			onSubmit="return FormCheck(this)">
 			<div id="detail">
 				<table summary="ユーザ情報登録フォーム">
 					<tr>
-						<th><label for="nickname">ニックネーム</label><span>※</span>
-						</th>
+						<th><label for="nickname">ニックネーム</label><span>※</span></th>
 						<td><input type="text" name="nickname" id="nickname" value=""
-							size="60" class="required" title="入力してください" />
-						</td>
+							size="60" /></td>
 					</tr>
 					<tr>
-						<th><label for="mail">メールアドレス</label><span>※</span>
-						</th>
+						<th><label for="mail">メールアドレス</label></th>
 						<td><input type="text" name="mail" id="mail" value=""
-							size="60" class="required" title="入力してください" />
-						</td>
+							size="60" /></td>
 					</tr>
 				</table>
 			</div>
