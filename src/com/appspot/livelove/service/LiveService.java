@@ -101,8 +101,8 @@ public class LiveService {
     }
 
     public boolean deleteLive(Key key, UserAccount ua){
-        Live target = Datastore.get(lm, key);
-        if(target.getRegistUserAccountRef().getModel().equals(ua)){
+        if(isEditableUser(key, ua)){
+            Live target = Datastore.get(lm, key);
             target.setLastUpdateDate(new Date());
             target.getLastUpdateUserAccountRef().setModel(ua);
             target.setDeleted(true);
