@@ -71,6 +71,5 @@
 				</c:forEach>
 			</table>
 		</div>
-		<a href="${f:url('viewRegistLive')}">ライブ情報登録</a>
 	</c:param>
 </c:import>

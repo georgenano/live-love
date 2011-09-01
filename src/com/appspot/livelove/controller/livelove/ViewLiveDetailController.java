@@ -25,6 +25,6 @@ public class ViewLiveDetailController extends Controller {
         HttpSession sess = request.getSession();
         UserAccount ua = (UserAccount) sess.getAttribute("userAccount");
         requestScope("isEditableUser", service.isEditableUser(key, ua));
-        return forward("ViewLiveDetail.jsp");
+        return forward("viewLiveDetail.jsp");
     }
 }

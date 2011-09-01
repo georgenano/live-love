@@ -14,7 +14,10 @@
 				</tr>
 				<tr>
 					<th>出演アーティスト</th>
-					<td>${f:h(live.artists)}</td>
+					<td><c:forEach var="artist" items="${live.artists}">
+							 ${f:h(artist)}
+						</c:forEach>
+					</td>
 				</tr>
 				<tr>
 					<th>地域</th>

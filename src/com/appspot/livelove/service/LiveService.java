@@ -2,6 +2,7 @@ package com.appspot.livelove.service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -25,6 +26,15 @@ public class LiveService {
     public Live registLive(Map<String, Object> input, UserAccount ua) {
         Live live = new Live();
         BeanUtil.copy(input, live);
+
+        // アーティストリストを設定
+        String artistsStr =(String) input.get("artistList");
+        String[] artists = artistsStr.split(",");
+        List<String> artistList = new ArrayList<String>();
+        for(String artist : artists){
+            artistList.add(artist);
+        }
+        live.setArtists(artistList);
 
         // 開場、開演、終演時刻を設定
         String year = (String) input.get("start_year");

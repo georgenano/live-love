@@ -49,31 +49,31 @@ public class LoginController extends Controller {
                     uam.userId.equal(userId),
                     uam.accountType.equal(accountType))
                 .asSingle();
-
         if (ua == null) {
+            // 初回ログイン
             ua = new UserAccount();
             ua.setUserId(userId);
             ua.setAccountType(accountType);
-            ua.setNickname(null);
-            ua.setMail(null);
-            ua.setRegistDate(new Date());
-            ua.setLastUpdateDate(new Date());
-            ua.setDeleted(false);
+
+            sessionScope("userAccount", ua);
+            return forward("/viewInitUserRegist");
+        } else {
+            // 初回ログイン以外
+            // 最終ログイン日時を更新
+            ua.setLastLoginDate(new Date());
+
+            Transaction tx = Datastore.beginTransaction();
+            Datastore.put(ua);
+            tx.commit();
+
+            sessionScope("userAccount", ua);
+
+            String _continue = asString("continue");
+            if (StringUtils.isBlank(_continue)) {
+                _continue = "/";
+            }
+            return redirect(_continue);
         }
 
-        // 最終ログイン日時を更新
-        ua.setLastLoginDate(new Date());
-
-        Transaction tx = Datastore.beginTransaction();
-        Datastore.put(ua);
-        tx.commit();
-
-        sessionScope("userAccount", ua);
-
-        String _continue = asString("continue");
-        if (StringUtils.isBlank(_continue)) {
-            _continue = "/";
-        }
-        return redirect(_continue);
     }
 }
