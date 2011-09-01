@@ -78,8 +78,8 @@ public class LiveService {
                 Datastore
                     .query(lm)
                     .filter(
-                        lm.liveOpenDate.greaterThanOrEqual(startDate),
-                        lm.liveOpenDate.lessThan(endDate),
+                        lm.liveStartDate.greaterThanOrEqual(startDate),
+                        lm.liveStartDate.lessThan(endDate),
                         lm.deleted.equal(false))
                     .asList());
         }

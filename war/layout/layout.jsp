@@ -9,9 +9,9 @@
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 </head>
 <body>
+	<img class="bg" src="/img/background.jpg" alt="" />
 	<div id="container">
 		<c:import url="/layout/header.jsp" />
-		<c:import url="/layout/menu.jsp" />
 		<div id="main">${param.content}</div>
 		<c:import url="/layout/footer.jsp" />
 	</div>

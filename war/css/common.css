@@ -2,7 +2,35 @@
 	font-size: small;
 	font-weight: normal;
 	letter-spacing: 1px;
-	color: #333333;
+	color: #FFFFFF;
+}
+
+body {
+	background-color: #000000;
+}
+
+img.bg {
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (max-width: 1024px){
+  img.bg {
+  left: 50%;
+  margin-left: -512px; }
+}
+
+input {
+	color: #000000;
+}
+
+textarea {
+	color: #000000;
 }
 
 #container {
@@ -34,7 +62,12 @@
 	margin: 0px;
 	padding: 0px;
 	text-align: center;
-	border: 1px #333333 solid;
+	border: 1px #CCCCCC solid;
+	background-color: #902080;
+}
+
+#header li a {
+	background-color: #902080;
 }
 
 /* ------------------------------
@@ -60,7 +93,12 @@
 	margin: 0px;
 	padding: 0px;
 	text-align: center;
-	border: 1px #333333 solid;
+	border: 1px #CCCCCC solid;
+	background-color: #902080;
+}
+
+#menu li a {
+	background-color: #902080;
 }
 
 /* ------------------------------
@@ -88,33 +126,34 @@
 
 #calendar table {
 	width: 1000px;
-	border-top: 1px #333333 solid;
-	border-left: 1px #333333 solid;
+	border-top: 1px #CCCCCC solid;
+	border-left: 1px #CCCCCC solid;
 	border-collapse: collapse;
 }
 
 #calendar th {
 	width: 100px;
 	height: 20px;
-	border-right: 1px #333333 solid;
-	border-bottom: 1px #333333 solid;
-	background-color: #0099CC;
+	border-right: 1px #CCCCCC solid;
+	border-bottom: 1px #CCCCCC solid;
+	background-color: #5C2148;
 }
 
 #calendar td {
 	width: 100px;
-	border-right: 1px #333333 solid;
-	border-bottom: 1px #333333 solid;
+	border-right: 1px #CCCCCC solid;
+	border-bottom: 1px #CCCCCC solid;
 }
 
 #calendar td.day {
 	height: 20px;
-	background-color: #E7E7E7;
+	color: #555555;
+	background-color: #CC80B3;
 }
 
 #calendar td.event {
 	height: 80px;
-	background-color: #FFFFFF;
+	background-color: #000000;
 	vertical-align: top;
 }
 
@@ -127,18 +166,18 @@
 
 #detail th {
 	width: 150px;
-	border-bottom: 1px #333333 dashed;
+	border-bottom: 1px #CCCCCC dashed;
 	text-align: right;
-	color: #0099CC;
+	color: #B38BA6;
 }
 
 #detail th label {
-	color: #0099CC;
+	color: #B38BA6;
 }
 
 #detail td {
 	width: 300px;
-	border-bottom: 1px #333333 dashed;
+	border-bottom: 1px #CCCCCC dashed;
 }
 
 /* ------------------------------

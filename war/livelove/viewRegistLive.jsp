@@ -31,7 +31,7 @@
 		function textCheck(Text, jname){
 			if ((Text) && (Text.value == "")) {
 				Error[i] = jname + "は必須項目です。";
-				Text.style.backgroundColor = '#ffcc66';
+				Text.style.backgroundColor = '#CC80B3';
 				i++;
 			} else {
 				Text.style.backgroundColor = '#ffffff';
@@ -41,7 +41,7 @@
 		function listCheck(List, jname){
 			if ((List) && (List[0].selected == true)) {
 				Error[i] = jname + "は必須項目です。";
-				List.style.backgroundColor = '#ffcc66';
+				List.style.backgroundColor = '#CC80B3';
 				i++;
 			} else {
 				List.style.backgroundColor = '#ffffff';
