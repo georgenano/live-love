@@ -6,6 +6,12 @@
 <c:import url="/layout/layout.jsp">
 	<c:param name="title" value="[ライブラブ〜Live Love〜] ライブ情報詳細" />
 	<c:param name="content">
+
+		<script language="JavaScript">		function DeleteConfirm() {
+			return (confirm("本当に削除しますか？"));
+		}
+		</script>
+
 		<div id="detail">
 			<table>
 				<tr>
@@ -118,11 +124,12 @@
 					</tr>
 					<tr>
 						<th>削除</th>
-						<td><a href="${f:url('deleteLive?key=')}${f:h(live.key)}">このライブ情報を削除する</a>
+						<td><a href="${f:url('deleteLive?key=')}${f:h(live.key)}" onClick="return DeleteConfirm()">このライブ情報を削除する</a>
 						</td>
 					</tr>
 				</c:if>
 			</table>
+			<a href="/livelove/">カレンダーに戻る</a>
 		</div>
 	</c:param>
 </c:import>

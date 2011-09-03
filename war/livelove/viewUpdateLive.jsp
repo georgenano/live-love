@@ -278,5 +278,6 @@
 			</div>
 			<input type="submit" value="ライブ情報更新" />
 		</form>
+		<a href="/livelove/viewLiveDetail?key=${f:h(live.key)}">ライブ詳細に戻る</a>
 	</c:param>
 </c:import>

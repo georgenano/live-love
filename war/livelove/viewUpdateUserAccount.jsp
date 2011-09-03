@@ -43,19 +43,23 @@
 			<div id="detail">
 				<table summary="プロフィール変更フォーム">
 					<tr>
-						<th><label for="nickname">ニックネーム</label><span>※</span></th>
-						<td><input type="text" name="nickname" id="nickname" value="${f:h(userAccount.nickname)}"
-							size="60" /></td>
+						<th><label for="nickname">ニックネーム</label><span>※</span>
+						</th>
+						<td><input type="text" name="nickname" id="nickname"
+							value="${f:h(userAccount.nickname)}" size="60" />
+						</td>
 					</tr>
 					<tr>
-						<th><label for="mail">メールアドレス</label></th>
-						<td><input type="text" name="mail" id="mail" value="${f:h(userAccount.mail)}"
-							size="60" /></td>
+						<th><label for="mail">メールアドレス</label>
+						</th>
+						<td><input type="text" name="mail" id="mail"
+							value="${f:h(userAccount.mail)}" size="60" />
+						</td>
 					</tr>
 				</table>
 			</div>
 			<input type="submit" value="プロフィール変更" />
 		</form>
-
+		<a href="/livelove/">カレンダーに戻る</a>
 	</c:param>
 </c:import>
