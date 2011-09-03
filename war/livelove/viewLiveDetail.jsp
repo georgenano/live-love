@@ -21,7 +21,8 @@
 					<th>出演アーティスト</th>
 					<td><c:forEach var="artist" items="${live.artists}">
 							 ${f:h(artist)}
-						</c:forEach></td>
+						</c:forEach>
+					</td>
 				</tr>
 				<tr>
 					<th>地域</th>
@@ -46,7 +47,8 @@
 						</c:when>
 						<c:otherwise>
 							<td><fmt:formatDate value="${live.liveOpenDate}"
-									pattern="yyyy年 MM月 dd日 hh:mm" /></td>
+									pattern="yyyy年 MM月 dd日 hh:mm" />
+							</td>
 						</c:otherwise>
 					</c:choose>
 				</tr>
@@ -58,7 +60,8 @@
 						</c:when>
 						<c:otherwise>
 							<td><fmt:formatDate value="${live.liveStartDate}"
-									pattern="yyyy年 MM月 dd日 hh:mm" /></td>
+									pattern="yyyy年 MM月 dd日 hh:mm" />
+							</td>
 						</c:otherwise>
 					</c:choose>
 				</tr>
@@ -70,7 +73,8 @@
 						</c:when>
 						<c:otherwise>
 							<td><fmt:formatDate value="${live.liveEndDate}"
-									pattern="yyyy年 MM月 dd日 hh:mm" /></td>
+									pattern="yyyy年 MM月 dd日 hh:mm" />
+							</td>
 						</c:otherwise>
 					</c:choose>
 				</tr>
@@ -120,32 +124,40 @@
 					<tr>
 						<th>削除</th>
 						<td><a href="${f:url('deleteLive?key=')}${f:h(live.key)}"
-							onClick="return DeleteConfirm()">このライブ情報を削除する</a></td>
+							onClick="return DeleteConfirm()">このライブ情報を削除する</a>
+						</td>
 					</tr>
 				</c:if>
 			</table>
 
 			<div id="commentList">
 				<h2>コメント一覧</h2>
-				<c:forEach var="comment" items="${commentList}">
-					<div id="comment">
-						${f:h(comment.comment)}
-						<hr />
-						<div id="comment_detail">
-						Posted at
-						<fmt:formatDate value="${comment.registDate}"
-							pattern="yyyy年 MM月 dd日 hh:mm" />
-						by ${f:h(comment.registUserAccountRef.model.nickname)}</div>
-					</div>
-				</c:forEach>
+				<c:choose>
+					<c:when test="${fn:length(commentList)!=0}">
+						<c:forEach var="comment" items="${commentList}">
+							<div id="comment">
+								${f:h(comment.comment)}
+								<hr />
+								<div id="comment_detail">
+									Posted at
+									<fmt:formatDate value="${comment.registDate}"
+										pattern="yyyy年 MM月 dd日 hh:mm" />
+									by ${f:h(comment.registUserAccountRef.model.nickname)}
+								</div>
+							</div>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						コメントはまだありません。
+					</c:otherwise>
+				</c:choose>
 			</div>
 			<div id="addComment">
 				<h2>コメント新規追加</h2>
 				<form method="post"
 					action="${f:url('addLiveComment?liveKey=')}${f:h(live.key)}">
 					<textarea name="comment" id="comment" rows="7" cols="46"></textarea>
-					<br />
-					<input type="submit" value="コメントする" />
+					<br /> <input type="submit" value="コメントする" />
 				</form>
 			</div>
 			<div id="back_link">
