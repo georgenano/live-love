@@ -1,20 +1,20 @@
 package com.appspot.livelove.meta;
 
-//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2011-08-23 15:18:09")
+//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2011-09-03 09:20:03")
 /** */
 public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.livelove.model.Live> {
 
     /** */
-    public final org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Integer> advanceCharge = new org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Integer>(this, "advanceCharge", "advanceCharge", int.class);
+    public final org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Integer> advanceCharge = new org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Integer>(this, "advanceCharge", "advanceCharge", java.lang.Integer.class);
 
     /** */
     public final org.slim3.datastore.StringCollectionAttributeMeta<com.appspot.livelove.model.Live, java.util.List<java.lang.String>> artists = new org.slim3.datastore.StringCollectionAttributeMeta<com.appspot.livelove.model.Live, java.util.List<java.lang.String>>(this, "artists", "artists", java.util.List.class);
 
     /** */
-    public final org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Integer> includeDrink = new org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Integer>(this, "includeDrink", "includeDrink", int.class);
+    public final org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Boolean> deleted = new org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Boolean>(this, "deleted", "deleted", boolean.class);
 
     /** */
-    public final org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Boolean> deleted = new org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Boolean>(this, "deleted", "deleted", boolean.class);
+    public final org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Boolean> includeDrink = new org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Boolean>(this, "includeDrink", "includeDrink", boolean.class);
 
     /** */
     public final org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, com.google.appengine.api.datastore.Key> key = new org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, com.google.appengine.api.datastore.Key>(this, "__key__", "key", com.google.appengine.api.datastore.Key.class);
@@ -44,7 +44,7 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
     public final org.slim3.datastore.StringAttributeMeta<com.appspot.livelove.model.Live> note = new org.slim3.datastore.StringAttributeMeta<com.appspot.livelove.model.Live>(this, "note", "note");
 
     /** */
-    public final org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Integer> pref = new org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Integer>(this, "pref", "pref", int.class);
+    public final org.slim3.datastore.StringAttributeMeta<com.appspot.livelove.model.Live> pref = new org.slim3.datastore.StringAttributeMeta<com.appspot.livelove.model.Live>(this, "pref", "pref");
 
     /** */
     public final org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.util.Date> registDate = new org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.util.Date>(this, "registDate", "registDate", java.util.Date.class);
@@ -53,7 +53,7 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
     public final org.slim3.datastore.ModelRefAttributeMeta<com.appspot.livelove.model.Live, org.slim3.datastore.ModelRef<com.appspot.livelove.model.UserAccount>, com.appspot.livelove.model.UserAccount> registUserAccountRef = new org.slim3.datastore.ModelRefAttributeMeta<com.appspot.livelove.model.Live, org.slim3.datastore.ModelRef<com.appspot.livelove.model.UserAccount>, com.appspot.livelove.model.UserAccount>(this, "registUserAccountRef", "registUserAccountRef", org.slim3.datastore.ModelRef.class, com.appspot.livelove.model.UserAccount.class);
 
     /** */
-    public final org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Integer> todayCharge = new org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Integer>(this, "todayCharge", "todayCharge", int.class);
+    public final org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Integer> todayCharge = new org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Integer>(this, "todayCharge", "todayCharge", java.lang.Integer.class);
 
     /** */
     public final org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Long> version = new org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Long>(this, "version", "version", java.lang.Long.class);
@@ -75,10 +75,10 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
     @Override
     public com.appspot.livelove.model.Live entityToModel(com.google.appengine.api.datastore.Entity entity) {
         com.appspot.livelove.model.Live model = new com.appspot.livelove.model.Live();
-        model.setAdvanceCharge(longToPrimitiveInt((java.lang.Long) entity.getProperty("advanceCharge")));
+        model.setAdvanceCharge(longToInteger((java.lang.Long) entity.getProperty("advanceCharge")));
         model.setArtists(toList(java.lang.String.class, entity.getProperty("artists")));
-        model.setIncludeDrink(longToPrimitiveInt((java.lang.Long) entity.getProperty("includeDrink")));
         model.setDeleted(booleanToPrimitiveBoolean((java.lang.Boolean) entity.getProperty("deleted")));
+        model.setIncludeDrink(booleanToPrimitiveBoolean((java.lang.Boolean) entity.getProperty("includeDrink")));
         model.setKey(entity.getKey());
         model.setLastUpdateDate((java.util.Date) entity.getProperty("lastUpdateDate"));
         if (model.getLastUpdateUserAccountRef() == null) {
@@ -91,13 +91,13 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
         model.setLivePlace((java.lang.String) entity.getProperty("livePlace"));
         model.setLiveStartDate((java.util.Date) entity.getProperty("liveStartDate"));
         model.setNote((java.lang.String) entity.getProperty("note"));
-        model.setPref(longToPrimitiveInt((java.lang.Long) entity.getProperty("pref")));
+        model.setPref((java.lang.String) entity.getProperty("pref"));
         model.setRegistDate((java.util.Date) entity.getProperty("registDate"));
         if (model.getRegistUserAccountRef() == null) {
             throw new NullPointerException("The property(registUserAccountRef) is null.");
         }
         model.getRegistUserAccountRef().setKey((com.google.appengine.api.datastore.Key) entity.getProperty("registUserAccountRef"));
-        model.setTodayCharge(longToPrimitiveInt((java.lang.Long) entity.getProperty("todayCharge")));
+        model.setTodayCharge(longToInteger((java.lang.Long) entity.getProperty("todayCharge")));
         model.setVersion((java.lang.Long) entity.getProperty("version"));
         return model;
     }
@@ -113,8 +113,8 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
         }
         entity.setProperty("advanceCharge", m.getAdvanceCharge());
         entity.setProperty("artists", m.getArtists());
-        entity.setProperty("includeDrink", m.getIncludeDrink());
         entity.setProperty("deleted", m.isDeleted());
+        entity.setProperty("includeDrink", m.isIncludeDrink());
         entity.setProperty("lastUpdateDate", m.getLastUpdateDate());
         if (m.getLastUpdateUserAccountRef() == null) {
             throw new NullPointerException("The property(lastUpdateUserAccountRef) must not be null.");
@@ -201,8 +201,10 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
         com.appspot.livelove.model.Live m = (com.appspot.livelove.model.Live) model;
         writer.beginObject();
         org.slim3.datastore.json.Default encoder0 = new org.slim3.datastore.json.Default();
-        writer.setNextPropertyName("advanceCharge");
-        encoder0.encode(writer, m.getAdvanceCharge());
+        if(m.getAdvanceCharge() != null){
+            writer.setNextPropertyName("advanceCharge");
+            encoder0.encode(writer, m.getAdvanceCharge());
+        }
         if(m.getArtists() != null){
             writer.setNextPropertyName("artists");
             writer.beginArray();
@@ -211,10 +213,10 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
             }
             writer.endArray();
         }
-        writer.setNextPropertyName("includeDrink");
-        encoder0.encode(writer, m.getIncludeDrink());
         writer.setNextPropertyName("deleted");
         encoder0.encode(writer, m.isDeleted());
+        writer.setNextPropertyName("includeDrink");
+        encoder0.encode(writer, m.isIncludeDrink());
         if(m.getKey() != null){
             writer.setNextPropertyName("key");
             encoder0.encode(writer, m.getKey());
@@ -251,8 +253,10 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
             writer.setNextPropertyName("note");
             encoder0.encode(writer, m.getNote());
         }
-        writer.setNextPropertyName("pref");
-        encoder0.encode(writer, m.getPref());
+        if(m.getPref() != null){
+            writer.setNextPropertyName("pref");
+            encoder0.encode(writer, m.getPref());
+        }
         if(m.getRegistDate() != null){
             writer.setNextPropertyName("registDate");
             encoder0.encode(writer, m.getRegistDate());
@@ -261,8 +265,10 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
             writer.setNextPropertyName("registUserAccountRef");
             encoder0.encode(writer, m.getRegistUserAccountRef(), maxDepth, currentDepth);
         }
-        writer.setNextPropertyName("todayCharge");
-        encoder0.encode(writer, m.getTodayCharge());
+        if(m.getTodayCharge() != null){
+            writer.setNextPropertyName("todayCharge");
+            encoder0.encode(writer, m.getTodayCharge());
+        }
         if(m.getVersion() != null){
             writer.setNextPropertyName("version");
             encoder0.encode(writer, m.getVersion());
@@ -294,10 +300,10 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
                 m.setArtists(elements);
             }
         }
-        reader = rootReader.newObjectReader("includeDrink");
-        m.setIncludeDrink(decoder0.decode(reader, m.getIncludeDrink()));
         reader = rootReader.newObjectReader("deleted");
         m.setDeleted(decoder0.decode(reader, m.isDeleted()));
+        reader = rootReader.newObjectReader("includeDrink");
+        m.setIncludeDrink(decoder0.decode(reader, m.isIncludeDrink()));
         reader = rootReader.newObjectReader("key");
         m.setKey(decoder0.decode(reader, m.getKey()));
         reader = rootReader.newObjectReader("lastUpdateDate");

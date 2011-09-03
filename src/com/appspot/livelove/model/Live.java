@@ -25,7 +25,7 @@ public class Live implements Serializable {
 
     private List<String> artists;
 
-    private int pref;
+    private String pref;
 
     private String livePlace;
 
@@ -35,11 +35,11 @@ public class Live implements Serializable {
 
     private Date liveEndDate;
 
-    private int advanceCharge;
+    private Integer advanceCharge;
 
-    private int todayCharge;
+    private Integer todayCharge;
 
-    private int includeDrink;
+    private boolean isIncludeDrink;
 
     private String note;
 
@@ -109,11 +109,11 @@ public class Live implements Serializable {
         this.artists = artists;
     }
 
-    public int getPref() {
+    public String getPref() {
         return pref;
     }
 
-    public void setPref(int pref) {
+    public void setPref(String pref) {
         this.pref = pref;
     }
 
@@ -149,28 +149,32 @@ public class Live implements Serializable {
         this.liveEndDate = liveEndDate;
     }
 
-    public int getAdvanceCharge() {
+    public Integer getAdvanceCharge() {
         return advanceCharge;
     }
 
-    public void setAdvanceCharge(int advanceCharge) {
+    public void setAdvanceCharge(Integer advanceCharge) {
         this.advanceCharge = advanceCharge;
     }
 
-    public int getTodayCharge() {
+    public Integer getTodayCharge() {
         return todayCharge;
     }
 
-    public void setTodayCharge(int todayCharge) {
+    public void setTodayCharge(Integer todayCharge) {
         this.todayCharge = todayCharge;
     }
 
-    public int getIncludeDrink() {
-        return includeDrink;
+    public boolean isIncludeDrink() {
+        return isIncludeDrink;
     }
 
-    public void setIncludeDrink(int includeDrink) {
-        this.includeDrink = includeDrink;
+    public void setIncludeDrink(boolean isIncludeDrink) {
+        this.isIncludeDrink = isIncludeDrink;
+    }
+
+    public void setIsIncludeDrink(Boolean isIncludeDrink) {
+        this.isIncludeDrink = isIncludeDrink;
     }
 
     public String getNote() {

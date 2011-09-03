@@ -25,31 +25,86 @@
 				</tr>
 				<tr>
 					<th>会場</th>
-					<td>${f:h(live.livePlace)}</td>
+					<c:choose>
+						<c:when test="${f:h(live.livePlace) == ''}">
+							<td>NO DATA</td>
+						</c:when>
+						<c:otherwise>
+							<td>${f:h(live.livePlace)}</td>
+						</c:otherwise>
+					</c:choose>
 				</tr>
 				<tr>
 					<th>開場時間</th>
-					<td>${f:h(live.liveOpenDate)}</td>
+					<c:choose>
+						<c:when test="${f:h(live.liveOpenDate) == ''}">
+							<td>NO DATA</td>
+						</c:when>
+						<c:otherwise>
+							<td><fmt:formatDate value="${live.liveOpenDate}"
+									pattern="yyyy年 MM月 dd日 hh:mm" />
+							</td>
+						</c:otherwise>
+					</c:choose>
 				</tr>
 				<tr>
 					<th>開演時間</th>
-					<td>${f:h(live.liveStartDate)}</td>
+					<c:choose>
+						<c:when test="${f:h(live.liveStartDate) == ''}">
+							<td>NO DATA</td>
+						</c:when>
+						<c:otherwise>
+							<td><fmt:formatDate value="${live.liveStartDate}"
+									pattern="yyyy年 MM月 dd日 hh:mm" />
+							</td>
+						</c:otherwise>
+					</c:choose>
 				</tr>
 				<tr>
 					<th>終演時間</th>
-					<td>${f:h(live.liveEndDate)}</td>
+					<c:choose>
+						<c:when test="${f:h(live.liveEndDate) == ''}">
+							<td>NO DATA</td>
+						</c:when>
+						<c:otherwise>
+							<td><fmt:formatDate value="${live.liveEndDate}"
+									pattern="yyyy年 MM月 dd日 hh:mm" />
+							</td>
+						</c:otherwise>
+					</c:choose>
 				</tr>
 				<tr>
 					<th>前売料金</th>
-					<td>${f:h(live.advanceCharge)}</td>
+					<c:choose>
+						<c:when test="${f:h(live.advanceCharge) == ''}">
+							<td>NO DATA</td>
+						</c:when>
+						<c:otherwise>
+							<td>&yen; ${f:h(live.advanceCharge)}</td>
+						</c:otherwise>
+					</c:choose>
 				</tr>
 				<tr>
 					<th>当日料金</th>
-					<td>${f:h(live.todayCharge)}</td>
+					<c:choose>
+						<c:when test="${f:h(live.todayCharge) == ''}">
+							<td>NO DATA</td>
+						</c:when>
+						<c:otherwise>
+							<td>&yen; ${f:h(live.todayCharge)}</td>
+						</c:otherwise>
+					</c:choose>
 				</tr>
 				<tr>
 					<th>説明</th>
-					<td>${f:h(live.note)}</td>
+					<c:choose>
+						<c:when test="${f:h(live.note) == ''}">
+							<td>NO DATA</td>
+						</c:when>
+						<c:otherwise>
+							<td>${f:h(live.note)}</td>
+						</c:otherwise>
+					</c:choose>
 				</tr>
 				<tr>
 					<th>登録者</th>
@@ -57,7 +112,12 @@
 				</tr>
 				<c:if test="${f:h(isEditableUser)}">
 					<tr>
-						<th></th>
+						<th>更新</th>
+						<td><a href="${f:url('viewUpdateLive?key=')}${f:h(live.key)}">このライブ情報を更新する</a>
+						</td>
+					</tr>
+					<tr>
+						<th>削除</th>
 						<td><a href="${f:url('deleteLive?key=')}${f:h(live.key)}">このライブ情報を削除する</a>
 						</td>
 					</tr>

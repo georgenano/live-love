@@ -28,10 +28,10 @@ public class LiveService {
         BeanUtil.copy(input, live);
 
         // アーティストリストを設定
-        String artistsStr =(String) input.get("artistList");
+        String artistsStr = (String) input.get("artistList");
         String[] artists = artistsStr.split(",");
         List<String> artistList = new ArrayList<String>();
-        for(String artist : artists){
+        for (String artist : artists) {
             artistList.add(artist);
         }
         live.setArtists(artistList);
@@ -70,6 +70,52 @@ public class LiveService {
         return live;
     }
 
+    public Live updateLive(Key key, Map<String, Object> input, UserAccount ua) {
+        // 更新後Live情報を編集
+        Live live = Datastore.get(lm, key);
+        BeanUtil.copy(input, live);
+
+        // アーティストリストを設定
+        String artistsStr = (String) input.get("artistList");
+        String[] artists = artistsStr.split(",");
+        List<String> artistList = new ArrayList<String>();
+        for (String artist : artists) {
+            artistList.add(artist);
+        }
+        live.setArtists(artistList);
+
+        // 開場、開演、終演時刻を設定
+        String year = (String) input.get("start_year");
+        String month = (String) input.get("start_month");
+        String day = (String) input.get("start_day");
+        String openHour = (String) input.get("open_hour");
+        String openTime = (String) input.get("open_time");
+        String startHour = (String) input.get("start_hour");
+        String startTime = (String) input.get("start_time");
+        String endHour = (String) input.get("end_hour");
+        String endTime = (String) input.get("end_time");
+        String openDate =
+            year + "." + month + "." + day + " " + openHour + ":" + openTime;
+        Date liveOpenDate = string2date(openDate);
+        live.setLiveOpenDate(liveOpenDate);
+        String startDate =
+            year + "." + month + "." + day + " " + startHour + ":" + startTime;
+        Date liveStartDate = string2date(startDate);
+        live.setLiveStartDate(liveStartDate);
+        String endDate =
+            year + "." + month + "." + day + " " + endHour + ":" + endTime;
+        Date liveEndDate = string2date(endDate);
+        live.setLiveEndDate(liveEndDate);
+
+        // 最終更新日、最終更新ユーザ、削除フラグを設定
+        live.setLastUpdateDate(new Date());
+        live.getLastUpdateUserAccountRef().setModel(ua);
+        live.setDeleted(false);
+
+        Datastore.put(live);
+        return live;
+    }
+
     public List<Live> getLiveList() {
         return Datastore.query(lm).sort(lm.lastUpdateDate.desc).asList();
     }
@@ -96,12 +142,12 @@ public class LiveService {
         return dailyLiveMap;
     }
 
-    public Live getLiveDetail(Key key){
+    public Live getLiveDetail(Key key) {
         return Datastore.get(lm, key);
     }
 
-    public boolean deleteLive(Key key, UserAccount ua){
-        if(isEditableUser(key, ua)){
+    public boolean deleteLive(Key key, UserAccount ua) {
+        if (isEditableUser(key, ua)) {
             Live target = Datastore.get(lm, key);
             target.setLastUpdateDate(new Date());
             target.getLastUpdateUserAccountRef().setModel(ua);
@@ -113,9 +159,9 @@ public class LiveService {
         }
     }
 
-    public boolean isEditableUser(Key key, UserAccount ua){
+    public boolean isEditableUser(Key key, UserAccount ua) {
         Live target = Datastore.get(lm, key);
-        if(target.getRegistUserAccountRef().getModel().equals(ua)){
+        if (target.getRegistUserAccountRef().getModel().equals(ua)) {
             return true;
         } else {
             return false;
@@ -128,6 +174,28 @@ public class LiveService {
         } catch (ParseException e) {
             return null;
         }
+    }
+
+    public boolean inputCheck(Map<String, Object> input) {
+        String liveName = (String) input.get("liveName");
+        String artistList = (String) input.get("artistList");
+        String pref = (String) input.get("pref");
+        String year = (String) input.get("start_year");
+        String month = (String) input.get("start_month");
+        String day = (String) input.get("start_day");
+        String startHour = (String) input.get("start_hour");
+        String startTime = (String) input.get("start_time");
+        if (liveName != ""
+            && artistList != ""
+            && pref != ""
+            && year != ""
+            && month != ""
+            && day != ""
+            && startHour != ""
+            && startTime != "") {
+            return true;
+        }
+        return false;
     }
 
 }
