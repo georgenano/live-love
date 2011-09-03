@@ -214,6 +214,6 @@
 			</div>
 			<input type="submit" value="ライブ情報登録" />
 		</form>
-		<div id="back_link"><a href="/livelove/">カレンダーに戻る</a></div>
+		<div id="back_link"><a href="/livelove/">ライブカレンダーに戻る</a></div>
 	</c:param>
 </c:import>

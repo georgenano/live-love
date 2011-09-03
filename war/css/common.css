@@ -35,6 +35,18 @@ textarea {
 	color: #000000;
 }
 
+h1 {
+	font-size:xx-large;
+}
+
+h2 {
+	font-size:large;
+}
+
+
+/* ------------------------------
+ container
+------------------------------ */
 #container {
 	position: relative;
 	width: 95%;
@@ -104,6 +116,19 @@ textarea {
 	margin-top: 0px;
 	margin-bottom: 100px;
 	padding-bottom: 30px;
+}
+
+/* ------------------------------
+ index
+------------------------------ */
+#intro {
+	float: left;
+	width: 400px;
+}
+
+#login {
+	margin-left: 450px;
+	padding-top: 20px;
 }
 
 /* ------------------------------

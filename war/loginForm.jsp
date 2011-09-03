@@ -3,10 +3,12 @@
 <%@taglib prefix="f" uri="http://www.slim3.org/functions"%>
 
 <c:import url="/layout/layout.jsp">
-  <c:param name="title" value="[ライブラブ〜Live Love〜] ログイン"/>
+  <c:param name="title" value="ログイン"/>
   <c:param name="content">
-	<p><a href="/openIdLogin?openid_identifier=https://mixi.jp/&continue=${continue}">Mixiでログイン</a></p>
-	<p><a href="/openIdLogin?openid_identifier=https://www.google.com/accounts/o8/id&continue=${continue}">Googleでログイン</a></p>
-	<p><a href="/twitterLogin?continue=${continue}">Twitterでログイン</a></p>
+  	<ul>
+		<li><a href="/openIdLogin?openid_identifier=https://mixi.jp/&continue=${continue}">Mixiでログイン</a></li>
+		<li><a href="/openIdLogin?openid_identifier=https://www.google.com/accounts/o8/id&continue=${continue}">Googleでログイン</a></li>
+		<li><a href="/twitterLogin?continue=${continue}">Twitterでログイン</a></li>
+  	</ul>
   </c:param>
 </c:import>
