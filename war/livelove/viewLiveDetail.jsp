@@ -4,9 +4,8 @@
 <%@taglib prefix="f" uri="http://www.slim3.org/functions"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:import url="/layout/layout.jsp">
-	<c:param name="title" value="[ライブラブ〜Live Love〜] ライブ情報詳細" />
+	<c:param name="title" value="ライブ情報詳細" />
 	<c:param name="content">
-
 		<script language="JavaScript">		function DeleteConfirm() {
 			return (confirm("本当に削除しますか？"));
 		}
@@ -129,7 +128,7 @@
 					</tr>
 				</c:if>
 			</table>
-			<a href="/livelove/">カレンダーに戻る</a>
+			<div id="back_link"><a href="/livelove/">カレンダーに戻る</a></div>
 		</div>
 	</c:param>
 </c:import>

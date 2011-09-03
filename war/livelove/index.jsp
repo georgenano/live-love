@@ -4,7 +4,7 @@
 <%@taglib prefix="f" uri="http://www.slim3.org/functions"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:import url="/layout/layout.jsp">
-	<c:param name="title" value="[ライブラブ〜Live Love〜] Home" />
+	<c:param name="title" value="カレンダー" />
 	<c:param name="content">
 		<div id="calendar">
 			<div id="calendar_title">

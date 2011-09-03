@@ -5,7 +5,7 @@
 <%@taglib prefix="f" uri="http://www.slim3.org/functions"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:import url="/layout/layout.jsp">
-	<c:param name="title" value="[ライブラブ〜Live Love〜] ライブ情報登録" />
+	<c:param name="title" value="ライブ情報更新" />
 	<c:param name="content">
 		<script language="JavaScript">		function FormCheck(Form) {
 			Error = new Array();
@@ -278,6 +278,6 @@
 			</div>
 			<input type="submit" value="ライブ情報更新" />
 		</form>
-		<a href="/livelove/viewLiveDetail?key=${f:h(live.key)}">ライブ詳細に戻る</a>
+		<div id="back_link"><a href="/livelove/viewLiveDetail?key=${f:h(live.key)}">ライブ詳細に戻る</a></div>
 	</c:param>
 </c:import>

@@ -5,8 +5,8 @@
 	color: #FFFFFF;
 }
 
-html, body {
-	height: 95%;
+html,body {
+	height: 98%;
 	background-color: #000000;
 }
 
@@ -61,6 +61,11 @@ textarea {
 	right: 0;
 }
 
+#header #page_title {
+	margin-top: 20px;
+	font-size: large;
+}
+
 /* ------------------------------
  menu
 ------------------------------ */
@@ -96,7 +101,7 @@ textarea {
  main
 ------------------------------ */
 #main {
-	margin-top: 40px;
+	margin-top: 0px;
 	margin-bottom: 100px;
 	padding-bottom: 30px;
 }
@@ -137,13 +142,14 @@ textarea {
 }
 
 #calendar td.day {
-	height: 20px;
-	color: #555555;
+	height: 15px;
+	color: #000000;
+	text-align: right;
 	background-color: #CC80B3;
 }
 
 #calendar td.event {
-	height: 80px;
+	height: 70px;
 	background-color: #000000;
 	vertical-align: top;
 }
@@ -171,16 +177,19 @@ textarea {
 	border-bottom: 1px #CCCCCC dashed;
 }
 
+#back_link {
+	margin-top: 10px;
+}
+
 /* ------------------------------
  footer
 ------------------------------ */
 #footer {
 	position: absolute;
 	bottom: 0px;
-	height: 30px;
+	height: 50px;
 	width: 100%;
 	text-align: center;
-
 }
 
 #footer ul {

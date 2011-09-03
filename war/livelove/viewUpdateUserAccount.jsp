@@ -3,9 +3,8 @@
 <%@taglib prefix="f" uri="http://www.slim3.org/functions"%>
 
 <c:import url="/layout/layout.jsp">
-	<c:param name="title" value="[ライブラブ〜Live Love〜] プロフィール変更" />
+	<c:param name="title" value="プロフィール変更" />
 	<c:param name="content">
-
 		<script language="JavaScript">
 		function FormCheck(Form) {
 			Error = new Array();
@@ -60,6 +59,6 @@
 			</div>
 			<input type="submit" value="プロフィール変更" />
 		</form>
-		<a href="/livelove/">カレンダーに戻る</a>
+		<div id="back_link"><a href="/livelove/">カレンダーに戻る</a></div>
 	</c:param>
 </c:import>
