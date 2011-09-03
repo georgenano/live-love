@@ -4,9 +4,11 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import com.appspot.livelove.meta.LiveCommentMeta;
 import com.google.appengine.api.datastore.Key;
 
 import org.slim3.datastore.Attribute;
+import org.slim3.datastore.InverseModelListRef;
 import org.slim3.datastore.Model;
 import org.slim3.datastore.ModelRef;
 
@@ -43,6 +45,13 @@ public class Live implements Serializable {
 
     private String note;
 
+    @Attribute(persistent = false)
+    private InverseModelListRef<LiveComment, Live> liveCommentListRef =
+        new InverseModelListRef<LiveComment, Live>(
+            LiveComment.class,
+            LiveCommentMeta.get().targetLiveRef.getName(),
+            this);
+
     private ModelRef<UserAccount> registUserAccountRef =
         new ModelRef<UserAccount>(UserAccount.class);
 
@@ -51,7 +60,7 @@ public class Live implements Serializable {
     private Date lastUpdateDate;
 
     private ModelRef<UserAccount> lastUpdateUserAccountRef =
-            new ModelRef<UserAccount>(UserAccount.class);
+        new ModelRef<UserAccount>(UserAccount.class);
 
     private boolean isDeleted;
 
@@ -185,6 +194,10 @@ public class Live implements Serializable {
         this.note = note;
     }
 
+    public InverseModelListRef<LiveComment, Live> getLiveCommentListRef() {
+        return liveCommentListRef;
+    }
+
     public ModelRef<UserAccount> getRegistUserAccountRef() {
         return registUserAccountRef;
     }
@@ -246,6 +259,5 @@ public class Live implements Serializable {
         }
         return true;
     }
-
 
 }

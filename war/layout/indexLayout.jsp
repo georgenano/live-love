@@ -12,7 +12,7 @@
 	<img class="bg" src="/img/background.jpg" alt="" />
 	<div id="container">
 		<c:import url="/layout/indexHeader.jsp" />
-		<div id="main">${param.content}</div>
+		<div id="main" class="clearfix">${param.content}</div>
 		<c:import url="/layout/footer.jsp" />
 	</div>
 </body>

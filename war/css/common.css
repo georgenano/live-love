@@ -6,7 +6,7 @@
 }
 
 html,body {
-	height: 98%;
+	height: 100%;
 	background-color: #000000;
 }
 
@@ -36,13 +36,13 @@ textarea {
 }
 
 h1 {
-	font-size:xx-large;
+	font-size: xx-large;
 }
 
 h2 {
-	font-size:large;
+	font-size: large;
+	margin-top: 50px;
 }
-
 
 /* ------------------------------
  container
@@ -50,9 +50,10 @@ h2 {
 #container {
 	position: relative;
 	width: 95%;
-	height: 100%;
 	min-height: 100%;
-	margin: 0px auto;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto-100px;
 }
 
 /* ------------------------------
@@ -114,8 +115,7 @@ h2 {
 ------------------------------ */
 #main {
 	margin-top: 0px;
-	margin-bottom: 100px;
-	padding-bottom: 30px;
+	padding-bottom: 80px;
 }
 
 /* ------------------------------
@@ -202,8 +202,20 @@ h2 {
 	border-bottom: 1px #CCCCCC dashed;
 }
 
+#commentList {
+	width: 450px;
+}
+
+#comment {
+	margin-bottom: 20px;
+}
+
+#comment_detail {
+	text-align: right;
+}
+
 #back_link {
-	margin-top: 10px;
+	margin-top: 20px;
 }
 
 /* ------------------------------
@@ -212,8 +224,8 @@ h2 {
 #footer {
 	position: absolute;
 	bottom: 0px;
-	height: 50px;
-	width: 100%;
+	width: 95%;
+	height: 80px;
 	text-align: center;
 }
 

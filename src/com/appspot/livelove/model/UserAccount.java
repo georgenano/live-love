@@ -33,6 +33,9 @@ public class UserAccount implements Serializable {
     @Attribute(persistent = false)
     private InverseModelListRef<Live, UserAccount> liveListRef;
 
+    @Attribute(persistent = false)
+    private InverseModelListRef<LiveComment, UserAccount> liveCommentListRef;
+
     private Date registDate;
 
     private Date lastUpdateDate;
@@ -119,6 +122,10 @@ public class UserAccount implements Serializable {
 
     public InverseModelListRef<Live, UserAccount> getLiveListRef() {
         return liveListRef;
+    }
+
+    public InverseModelListRef<LiveComment, UserAccount> getLiveCommentListRef() {
+        return liveCommentListRef;
     }
 
     public Date getRegistDate() {

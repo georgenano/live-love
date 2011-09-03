@@ -1,6 +1,6 @@
 package com.appspot.livelove.meta;
 
-//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2011-09-03 09:20:03")
+//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2011-09-03 23:26:07")
 /** */
 public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.livelove.model.Live> {
 
@@ -229,6 +229,10 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
             writer.setNextPropertyName("lastUpdateUserAccountRef");
             encoder0.encode(writer, m.getLastUpdateUserAccountRef(), maxDepth, currentDepth);
         }
+        if(m.getLiveCommentListRef() != null){
+            writer.setNextPropertyName("liveCommentListRef");
+            encoder0.encode(writer, m.getLiveCommentListRef());
+        }
         if(m.getLiveEndDate() != null){
             writer.setNextPropertyName("liveEndDate");
             encoder0.encode(writer, m.getLiveEndDate());
@@ -310,6 +314,7 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
         m.setLastUpdateDate(decoder0.decode(reader, m.getLastUpdateDate()));
         reader = rootReader.newObjectReader("lastUpdateUserAccountRef");
         decoder0.decode(reader, m.getLastUpdateUserAccountRef(), maxDepth, currentDepth);
+        reader = rootReader.newObjectReader("liveCommentListRef");
         reader = rootReader.newObjectReader("liveEndDate");
         m.setLiveEndDate(decoder0.decode(reader, m.getLiveEndDate()));
         reader = rootReader.newObjectReader("liveName");

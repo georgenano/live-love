@@ -1,7 +1,5 @@
 package com.appspot.livelove.service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -20,8 +18,6 @@ import com.google.appengine.api.datastore.Key;
 public class LiveService {
 
     private LiveMeta lm = new LiveMeta();
-    private static final String DATE_PATTERN = "yyyy.MM.dd HH:mm";
-    private static SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN);
 
     public Live registLive(Map<String, Object> input, UserAccount ua) {
         Live live = new Live();
@@ -48,15 +44,15 @@ public class LiveService {
         String endTime = (String) input.get("end_time");
         String openDate =
             year + "." + month + "." + day + " " + openHour + ":" + openTime;
-        Date liveOpenDate = string2date(openDate);
+        Date liveOpenDate = CommonUtilService.string2date(openDate);
         live.setLiveOpenDate(liveOpenDate);
         String startDate =
             year + "." + month + "." + day + " " + startHour + ":" + startTime;
-        Date liveStartDate = string2date(startDate);
+        Date liveStartDate = CommonUtilService.string2date(startDate);
         live.setLiveStartDate(liveStartDate);
         String endDate =
             year + "." + month + "." + day + " " + endHour + ":" + endTime;
-        Date liveEndDate = string2date(endDate);
+        Date liveEndDate = CommonUtilService.string2date(endDate);
         live.setLiveEndDate(liveEndDate);
 
         // 登録日、登録ユーザ、最終更新日、最終更新ユーザ、削除フラグを設定
@@ -96,15 +92,15 @@ public class LiveService {
         String endTime = (String) input.get("end_time");
         String openDate =
             year + "." + month + "." + day + " " + openHour + ":" + openTime;
-        Date liveOpenDate = string2date(openDate);
+        Date liveOpenDate = CommonUtilService.string2date(openDate);
         live.setLiveOpenDate(liveOpenDate);
         String startDate =
             year + "." + month + "." + day + " " + startHour + ":" + startTime;
-        Date liveStartDate = string2date(startDate);
+        Date liveStartDate = CommonUtilService.string2date(startDate);
         live.setLiveStartDate(liveStartDate);
         String endDate =
             year + "." + month + "." + day + " " + endHour + ":" + endTime;
-        Date liveEndDate = string2date(endDate);
+        Date liveEndDate = CommonUtilService.string2date(endDate);
         live.setLiveEndDate(liveEndDate);
 
         // 最終更新日、最終更新ユーザ、削除フラグを設定
@@ -168,13 +164,6 @@ public class LiveService {
         }
     }
 
-    private static Date string2date(String value) {
-        try {
-            return sdf.parse(value);
-        } catch (ParseException e) {
-            return null;
-        }
-    }
 
     public boolean inputCheck(Map<String, Object> input) {
         String liveName = (String) input.get("liveName");
