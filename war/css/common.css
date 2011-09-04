@@ -16,8 +16,8 @@ img.bg {
 	width: 100%;
 	height: auto;
 	position: fixed;
-	top: 0px;
-	left: 0px;
+	top: 0;
+	left: 0;
 }
 
 @media screen and (max-width: 1024px) {
@@ -60,12 +60,8 @@ h2 {
  header
 ------------------------------ */
 #header {
-	margin: 0px;
-	padding: 0px;
-}
-
-#header a.log {
-
+	margin: 0;
+	padding: 0;
 }
 
 #header a.logout {
@@ -83,24 +79,24 @@ h2 {
  menu
 ------------------------------ */
 #menu {
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 }
 
 #menu ul {
 	list-style: none outside;
 	width: 1000px;
 	display: block;
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 }
 
 #menu li {
 	float: left;
 	width: 120px;
 	height: 20px;
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	text-align: center;
 	border: 1px #CCCCCC solid;
 	background-color: #902080;
@@ -114,7 +110,7 @@ h2 {
  main
 ------------------------------ */
 #main {
-	margin-top: 0px;
+	margin-top: 0;
 	padding-bottom: 80px;
 }
 
@@ -136,13 +132,13 @@ h2 {
 ------------------------------ */
 #calendar ul {
 	list-style: none;
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 }
 
 #calendar li {
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 }
 
 #calendar table {
@@ -188,7 +184,6 @@ h2 {
 
 #detail th {
 	width: 150px;
-	border-bottom: 1px #CCCCCC dashed;
 	text-align: right;
 	color: #B38BA6;
 }
@@ -199,7 +194,6 @@ h2 {
 
 #detail td {
 	width: 300px;
-	border-bottom: 1px #CCCCCC dashed;
 }
 
 #commentList {
@@ -223,7 +217,7 @@ h2 {
 ------------------------------ */
 #footer {
 	position: absolute;
-	bottom: 0px;
+	bottom: 0;
 	width: 95%;
 	height: 80px;
 	text-align: center;
@@ -242,5 +236,5 @@ h2 {
 	clear: both;
 	display: block;
 	visibility: hidden;
-	height: 0px;
+	height: 0;
 }
