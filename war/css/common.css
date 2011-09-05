@@ -70,8 +70,7 @@ h2 {
 	right: 0;
 }
 
-#header #page_title {
-	margin-top: 20px;
+#page_title {
 	font-size: large;
 }
 
@@ -176,6 +175,20 @@ h2 {
 }
 
 /* ------------------------------
+ joinLive
+------------------------------ */
+#left {
+	float: left;
+	width: 450px;
+}
+
+#joinLive {
+	margin-left: 460px;
+	margin-top: -40px;
+}
+
+
+/* ------------------------------
  detail
 ------------------------------ */
 #detail table {
@@ -196,6 +209,9 @@ h2 {
 	width: 300px;
 }
 
+/* ------------------------------
+ comment
+------------------------------ */
 #commentList {
 	width: 450px;
 }
@@ -207,6 +223,7 @@ h2 {
 #comment_detail {
 	text-align: right;
 }
+
 
 #back_link {
 	margin-top: 20px;

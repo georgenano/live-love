@@ -10,6 +10,7 @@ import org.slim3.controller.Navigation;
 import com.appspot.livelove.model.Live;
 import com.appspot.livelove.model.LiveComment;
 import com.appspot.livelove.model.UserAccount;
+import com.appspot.livelove.model.UserAccountLive;
 import com.appspot.livelove.service.LiveService;
 import com.google.appengine.api.datastore.Key;
 
@@ -23,15 +24,25 @@ public class ViewLiveDetailController extends Controller {
         Key key = asKey("key");
         Live live = service.getLiveDetail(key);
         requestScope("live", live);
+
         // commentListの設定
         if(live.getLiveCommentListRef() != null){
             List<LiveComment> comments = live.getLiveCommentListRef().getModelList();
             requestScope("commentList", comments);
         }
+
+        //参戦表明者リストの設定
+        List<UserAccountLive> joinUserList = live.getUserAccountLiveListRef().getModelList();
+        requestScope("joinUserList", joinUserList);
+
         // 変更可能ユーザの設定
         HttpSession sess = request.getSession();
         UserAccount ua = (UserAccount) sess.getAttribute("userAccount");
         requestScope("isEditableUser", service.isEditableUser(key, ua));
+
+        // 参戦可能ユーザの設定
+        requestScope("canJoinLive", service.canJoinLive(key, ua.getKey()));
+
         return forward("viewLiveDetail.jsp");
     }
 }

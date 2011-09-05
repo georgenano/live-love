@@ -6,7 +6,7 @@
   <c:param name="title" value="ログイン"/>
   <c:param name="content">
   	<ul>
-		<li><a href="/openIdLogin?openid_identifier=https://mixi.jp/&continue=${continue}">Mixiでログイン</a></li>
+		<li><a href="/openIdLogin?openid_identifier=https://mixi.jp/&continue=${continue}">mixiでログイン</a></li>
 		<li><a href="/openIdLogin?openid_identifier=https://www.google.com/accounts/o8/id&continue=${continue}">Googleでログイン</a></li>
 		<li><a href="/twitterLogin?continue=${continue}">Twitterでログイン</a></li>
   	</ul>

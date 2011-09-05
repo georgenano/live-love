@@ -3,6 +3,9 @@ package com.appspot.livelove.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.appspot.livelove.meta.LiveCommentMeta;
+import com.appspot.livelove.meta.LiveMeta;
+import com.appspot.livelove.meta.UserAccountLiveMeta;
 import com.google.appengine.api.datastore.Key;
 
 import org.slim3.datastore.Attribute;
@@ -31,10 +34,39 @@ public class UserAccount implements Serializable {
     private Date lastLoginDate;
 
     @Attribute(persistent = false)
-    private InverseModelListRef<Live, UserAccount> liveListRef;
+    private InverseModelListRef<Live, UserAccount> registLiveListRef =
+        new InverseModelListRef<Live, UserAccount>(
+            Live.class,
+            LiveMeta.get().registUserAccountRef.getName(),
+            this);
 
     @Attribute(persistent = false)
-    private InverseModelListRef<LiveComment, UserAccount> liveCommentListRef;
+    private InverseModelListRef<Live, UserAccount> lastUpdateLiveListRef =
+        new InverseModelListRef<Live, UserAccount>(
+            Live.class,
+            LiveMeta.get().lastUpdateUserAccountRef.getName(),
+            this);
+
+    @Attribute(persistent = false)
+    private InverseModelListRef<LiveComment, UserAccount> registLiveCommentListRef =
+        new InverseModelListRef<LiveComment, UserAccount>(
+            LiveComment.class,
+            LiveCommentMeta.get().registUserAccountRef.getName(),
+            this);
+
+    @Attribute(persistent = false)
+    private InverseModelListRef<LiveComment, UserAccount> lastUpdateLiveCommentListRef =
+        new InverseModelListRef<LiveComment, UserAccount>(
+            LiveComment.class,
+            LiveCommentMeta.get().registUserAccountRef.getName(),
+            this);
+
+    @Attribute(persistent = false)
+    private InverseModelListRef<UserAccountLive, UserAccount> userAccoountLiveListRef =
+        new InverseModelListRef<UserAccountLive, UserAccount>(
+            UserAccountLive.class,
+            UserAccountLiveMeta.get().userAccountRef.getName(),
+            this);
 
     private Date registDate;
 
@@ -120,12 +152,24 @@ public class UserAccount implements Serializable {
         this.lastLoginDate = lastLoginDate;
     }
 
-    public InverseModelListRef<Live, UserAccount> getLiveListRef() {
-        return liveListRef;
+    public InverseModelListRef<Live, UserAccount> getRegistLiveListRef() {
+        return registLiveListRef;
     }
 
-    public InverseModelListRef<LiveComment, UserAccount> getLiveCommentListRef() {
-        return liveCommentListRef;
+    public InverseModelListRef<Live, UserAccount> getLastUpdateLiveListRef() {
+        return lastUpdateLiveListRef;
+    }
+
+    public InverseModelListRef<LiveComment, UserAccount> getRegistLiveCommentListRef() {
+        return registLiveCommentListRef;
+    }
+
+    public InverseModelListRef<LiveComment, UserAccount> getLastUpdateLiveCommentListRef() {
+        return lastUpdateLiveCommentListRef;
+    }
+
+    public InverseModelListRef<UserAccountLive, UserAccount> getUserAccoountLiveListRef() {
+        return userAccoountLiveListRef;
     }
 
     public Date getRegistDate() {

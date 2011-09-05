@@ -1,6 +1,6 @@
 package com.appspot.livelove.meta;
 
-//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2011-09-03 23:26:07")
+//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2011-09-04 10:34:14")
 /** */
 public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.livelove.model.Live> {
 
@@ -273,6 +273,10 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
             writer.setNextPropertyName("todayCharge");
             encoder0.encode(writer, m.getTodayCharge());
         }
+        if(m.getUserAccountLiveListRef() != null){
+            writer.setNextPropertyName("userAccountLiveListRef");
+            encoder0.encode(writer, m.getUserAccountLiveListRef());
+        }
         if(m.getVersion() != null){
             writer.setNextPropertyName("version");
             encoder0.encode(writer, m.getVersion());
@@ -335,6 +339,7 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
         decoder0.decode(reader, m.getRegistUserAccountRef(), maxDepth, currentDepth);
         reader = rootReader.newObjectReader("todayCharge");
         m.setTodayCharge(decoder0.decode(reader, m.getTodayCharge()));
+        reader = rootReader.newObjectReader("userAccountLiveListRef");
         reader = rootReader.newObjectReader("version");
         m.setVersion(decoder0.decode(reader, m.getVersion()));
         return m;

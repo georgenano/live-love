@@ -11,13 +11,18 @@ import org.slim3.datastore.Datastore;
 import org.slim3.util.BeanUtil;
 
 import com.appspot.livelove.meta.LiveMeta;
+import com.appspot.livelove.meta.UserAccountLiveMeta;
+import com.appspot.livelove.meta.UserAccountMeta;
 import com.appspot.livelove.model.Live;
 import com.appspot.livelove.model.UserAccount;
+import com.appspot.livelove.model.UserAccountLive;
 import com.google.appengine.api.datastore.Key;
 
 public class LiveService {
 
     private LiveMeta lm = new LiveMeta();
+    private UserAccountMeta uam = new UserAccountMeta();
+    private UserAccountLiveMeta ualm = new UserAccountLiveMeta();
 
     public Live registLive(Map<String, Object> input, UserAccount ua) {
         Live live = new Live();
@@ -164,6 +169,38 @@ public class LiveService {
         }
     }
 
+    public boolean joinLive(Key liveKey, Key userAccountKey) {
+        if (canJoinLive(liveKey, userAccountKey)) {
+            Live live = Datastore.get(lm, liveKey);
+            UserAccount userAccount = Datastore.get(uam, userAccountKey);
+
+            UserAccountLive ual = new UserAccountLive();
+            ual.getLiveRef().setModel(live);
+            ual.getUserAccountRef().setModel(userAccount);
+            ual.setRegistDate(new Date());
+            ual.setDeleted(false);
+            Datastore.put(live, userAccount, ual);
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean canJoinLive(Key liveKey, Key userAccountKey) {
+        UserAccountLive ual =
+            Datastore
+                .query(ualm)
+                .filter(
+                    ualm.userAccountRef.equal(userAccountKey),
+                    ualm.liveRef.equal(liveKey))
+                .asSingle();
+        if (ual == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public boolean inputCheck(Map<String, Object> input) {
         String liveName = (String) input.get("liveName");
