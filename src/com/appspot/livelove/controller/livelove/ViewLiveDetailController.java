@@ -32,7 +32,7 @@ public class ViewLiveDetailController extends Controller {
         }
 
         //参戦表明者リストの設定
-        List<UserAccountLive> joinUserList = live.getUserAccountLiveListRef().getModelList();
+        List<UserAccountLive> joinUserList = service.getUserListJoinedLive(key);
         requestScope("joinUserList", joinUserList);
 
         // 変更可能ユーザの設定
@@ -41,7 +41,7 @@ public class ViewLiveDetailController extends Controller {
         requestScope("isEditableUser", service.isEditableUser(key, ua));
 
         // 参戦可能ユーザの設定
-        requestScope("canJoinLive", service.canJoinLive(key, ua.getKey()));
+        requestScope("canJoinLive", !service.joinedLive(key, ua.getKey()));
 
         return forward("viewLiveDetail.jsp");
     }

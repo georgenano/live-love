@@ -170,35 +170,61 @@ public class LiveService {
     }
 
     public boolean joinLive(Key liveKey, Key userAccountKey) {
-        if (canJoinLive(liveKey, userAccountKey)) {
+        if (!joinedLive(liveKey, userAccountKey)) {
             Live live = Datastore.get(lm, liveKey);
             UserAccount userAccount = Datastore.get(uam, userAccountKey);
-
             UserAccountLive ual = new UserAccountLive();
             ual.getLiveRef().setModel(live);
             ual.getUserAccountRef().setModel(userAccount);
             ual.setRegistDate(new Date());
             ual.setDeleted(false);
             Datastore.put(live, userAccount, ual);
-
             return true;
         } else {
             return false;
         }
     }
 
-    public boolean canJoinLive(Key liveKey, Key userAccountKey) {
+    public boolean disJoinLive(Key liveKey, Key userAccountKey) {
+        if (joinedLive(liveKey, userAccountKey)) {
+            Live live = Datastore.get(lm, liveKey);
+            UserAccount userAccount = Datastore.get(uam, userAccountKey);
+            UserAccountLive ual =
+                Datastore
+                    .query(ualm)
+                    .filter(
+                        ualm.userAccountRef.equal(userAccountKey),
+                        ualm.liveRef.equal(liveKey),
+                        ualm.deleted.equal(false))
+                    .asSingle();
+            ual.setDeleted(true);
+            Datastore.put(live, userAccount, ual);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public List<UserAccountLive> getUserListJoinedLive(Key key) {
+        return Datastore
+            .query(ualm)
+            .filter(ualm.liveRef.equal(key), ualm.deleted.equal(false))
+            .asList();
+    }
+
+    public boolean joinedLive(Key liveKey, Key userAccountKey) {
         UserAccountLive ual =
             Datastore
                 .query(ualm)
                 .filter(
                     ualm.userAccountRef.equal(userAccountKey),
-                    ualm.liveRef.equal(liveKey))
+                    ualm.liveRef.equal(liveKey),
+                    ualm.deleted.equal(false))
                 .asSingle();
         if (ual == null) {
-            return true;
-        } else {
             return false;
+        } else {
+            return true;
         }
     }
 

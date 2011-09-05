@@ -172,7 +172,7 @@
 					<br />
 				</c:when>
 				<c:otherwise>
-					<a href="${f:url('disJjoinLive?liveKey=')}${f:h(live.key)}">このライブの参戦を取り消す</a>
+					<a href="${f:url('disJoinLive?liveKey=')}${f:h(live.key)}">このライブの参戦を取り消す</a>
 					<br />
 				</c:otherwise>
 			</c:choose>
