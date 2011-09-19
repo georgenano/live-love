@@ -1,6 +1,6 @@
 package com.appspot.livelove.meta;
 
-//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2011-09-04 10:34:14")
+//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2011-09-19 21:34:58")
 /** */
 public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.livelove.model.Live> {
 

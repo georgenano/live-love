@@ -3,6 +3,7 @@ package com.appspot.livelove.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.appspot.livelove.meta.ArtistMeta;
 import com.appspot.livelove.meta.LiveCommentMeta;
 import com.appspot.livelove.meta.LiveMeta;
 import com.appspot.livelove.meta.UserAccountLiveMeta;
@@ -45,6 +46,20 @@ public class UserAccount implements Serializable {
         new InverseModelListRef<Live, UserAccount>(
             Live.class,
             LiveMeta.get().lastUpdateUserAccountRef.getName(),
+            this);
+
+    @Attribute(persistent = false)
+    private InverseModelListRef<Artist, UserAccount> registArtistListRef =
+        new InverseModelListRef<Artist, UserAccount>(
+            Artist.class,
+            ArtistMeta.get().registUserAccountRef.getName(),
+            this);
+
+    @Attribute(persistent = false)
+    private InverseModelListRef<Artist, UserAccount> lastUpdateArtistListRef =
+        new InverseModelListRef<Artist, UserAccount>(
+            Artist.class,
+            ArtistMeta.get().lastUpdateUserAccountRef.getName(),
             this);
 
     @Attribute(persistent = false)
@@ -158,6 +173,14 @@ public class UserAccount implements Serializable {
 
     public InverseModelListRef<Live, UserAccount> getLastUpdateLiveListRef() {
         return lastUpdateLiveListRef;
+    }
+
+    public InverseModelListRef<Artist, UserAccount> getRegistArtistListRef() {
+        return registArtistListRef;
+    }
+
+    public InverseModelListRef<Artist, UserAccount> getLastUpdateArtistListRef() {
+        return lastUpdateArtistListRef;
     }
 
     public InverseModelListRef<LiveComment, UserAccount> getRegistLiveCommentListRef() {

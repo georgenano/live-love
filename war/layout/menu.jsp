@@ -4,6 +4,7 @@
 	<ul>
 		<li><a href="${f:url('/livelove/')}">ライブカレンダー</a></li>
 		<li><a href="${f:url('/livelove/viewRegistLive')}">ライブ新規登録</a></li>
+		<li><a href="${f:url('/livelove/viewRegistArtist')}">アーティスト登録</a></li>
 		<li><a href="${f:url('/livelove/viewUpdateUserAccount')}">プロフィール変更</a>
 		</li>
 	</ul>
