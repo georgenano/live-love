@@ -11,20 +11,29 @@
 		<div id="detail">
 			<table summary="アーティスト情報">
 				<tr>
-					<th><label for="name">アーティスト名</label></th>
+					<th><label for="name">アーティスト名</label>
+					</th>
 					<td>${f:h(artist.name)}</td>
 				</tr>
 				<tr>
-					<th><label for="anotherNames">別名、略称</label></th>
+					<th><label for="anotherNames">別名、略称</label>
+					</th>
 					<td><c:forEach var="anotherName"
 							items="${artist.anotherNames}">
 							 ${f:h(anotherName)}
-						</c:forEach></td>
+						</c:forEach>
+					</td>
 				</tr>
 				<tr>
-					<th><label for="note">説明</label></th>
+					<th><label for="note">説明</label>
+					</th>
 					<td>${f:h(artist.description)}</td>
 					<td></td>
+				</tr>
+				<tr>
+					<th>更新</th>
+					<td><a href="${f:url('viewUpdateArtist?key=')}${f:h(artist.key)}">このアーティスト情報を更新する</a>
+					</td>
 				</tr>
 			</table>
 		</div>
