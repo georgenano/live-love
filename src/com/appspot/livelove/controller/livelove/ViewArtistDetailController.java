@@ -21,11 +21,6 @@ public class ViewArtistDetailController extends Controller {
         Artist artist = service.getArtist(key);
         requestScope("artist", artist);
 
-        // 変更可能ユーザの設定
-        HttpSession sess = request.getSession();
-        UserAccount ua = (UserAccount) sess.getAttribute("userAccount");
-        requestScope("isEditableUser", service.isEditableUser(key, ua));
-
         return forward("viewArtistDetail.jsp");
     }
 }

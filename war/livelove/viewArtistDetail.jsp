@@ -7,6 +7,7 @@
 <c:import url="/layout/layout.jsp">
 	<c:param name="title" value="アーティスト情報詳細" />
 	<c:param name="content">
+		<div id="page_title">アーティスト情報詳細</div>
 		<div id="detail">
 			<table summary="アーティスト情報">
 				<tr>
@@ -14,14 +15,15 @@
 					<td>${f:h(artist.name)}</td>
 				</tr>
 				<tr>
-					<th><label for="anotherNameList">別名、略称</label></th>
-					<td><c:forEach var="another" items="${artist.anotherNameList}">
-							 ${f:h(another)}
+					<th><label for="anotherNames">別名、略称</label></th>
+					<td><c:forEach var="anotherName"
+							items="${artist.anotherNames}">
+							 ${f:h(anotherName)}
 						</c:forEach></td>
 				</tr>
 				<tr>
 					<th><label for="note">説明</label></th>
-					<td>${f:h(artist.descritpion)}</td>
+					<td>${f:h(artist.description)}</td>
 					<td></td>
 				</tr>
 			</table>

@@ -1,5 +1,6 @@
 package com.appspot.livelove.controller.livelove;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 
+import com.appspot.livelove.model.Artist;
 import com.appspot.livelove.model.ArtistLive;
 import com.appspot.livelove.model.Live;
 import com.appspot.livelove.model.LiveComment;
@@ -27,8 +29,12 @@ public class ViewLiveDetailController extends Controller {
         requestScope("live", live);
 
         // artistListÇÃê›íË
-        List<ArtistLive> artistLiveList = service.getArtistListJoinedLive(key);
-        requestScope("joinArtistList", artistLiveList);
+        List<ArtistLive> als = service.getArtistListJoinedLive(key);
+        List<Artist> joinArtistList = new ArrayList<Artist>();
+        for(ArtistLive al : als){
+            joinArtistList.add(al.getArtistRef().getModel());
+        }
+        requestScope("joinArtistList", joinArtistList);
 
         // commentListÇÃê›íË
         if(live.getLiveCommentListRef() != null){

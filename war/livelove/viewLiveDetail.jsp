@@ -23,7 +23,7 @@
 					<tr>
 						<th>出演アーティスト</th>
 						<td><c:forEach var="artist" items="${joinArtistList}">
-							 ${f:h(artist.artistRef.model.name)}
+							 <a href="${f:url('viewArtistDetail?key=')}${f:h(artist.key)}">${f:h(artist.name)}</a>
 						</c:forEach></td>
 					</tr>
 					<tr>

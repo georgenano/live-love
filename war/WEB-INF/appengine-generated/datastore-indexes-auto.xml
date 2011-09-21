@@ -1,14 +1,14 @@
-<!-- Indices written at Wed, 21 Sep 2011 11:11:23 UTC -->
+<!-- Indices written at Wed, 21 Sep 2011 13:27:07 UTC -->
 
 <datastore-indexes>
 
-    <!-- Used 180 times in query history -->
+    <!-- Used 240 times in query history -->
     <datastore-index kind="Live" ancestor="false" source="auto">
         <property name="deleted" direction="asc"/>
         <property name="liveStartDate" direction="asc"/>
     </datastore-index>
 
-    <!-- Used 27 times in query history -->
+    <!-- Used 37 times in query history -->
     <datastore-index kind="Artist" ancestor="false" source="auto">
         <property name="deleted" direction="asc"/>
         <property name="name" direction="asc"/>
