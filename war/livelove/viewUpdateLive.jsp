@@ -1,9 +1,11 @@
 <%@page import="java.util.Calendar"%>
+<%@page import="org.apache.commons.lang3.StringUtils"%>
 <%@page pageEncoding="UTF-8" isELIgnored="false" session="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@taglib prefix="f" uri="http://www.slim3.org/functions"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <c:import url="/layout/layout.jsp">
 	<c:param name="title" value="ライブ情報更新" />
 	<c:param name="content">
@@ -84,20 +86,23 @@
 			<div id="detail">
 				<table summary="ライブ情報記入フォーム">
 					<tr>
-						<th><label for="liveName">ライブ名</label><span>※</span></th>
+						<th><label for="liveName">ライブ名</label><span>※</span>
+						</th>
 						<td><input type="text" name="liveName" id="liveName"
 							value="${f:h(live.liveName)}" size="60" class="required"
-							title="入力してください" /></td>
+							title="入力してください" />
+						</td>
 					</tr>
 					<tr>
-						<th><label for="artistList">出演アーティスト</label><span>※</span></th>
-						<td><input type="text" name="artistList" id="artistList"
-							value="${fn:substring(f:h(live.artists), 1, fn:length(f:h(live.artists))-1)}"
-							size="60" class="required" title="入力してください" /></td>
-					</tr>
-					<tr>
-						<th>地域<span>※</span>
+						<th><label for="artistList">出演アーティスト</label><span>※</span>
 						</th>
+						<td><input type="text" name="artistList" id="artistList"
+							value="${f:h(joinArtistStr)}"
+							size="60" class="required" title="入力してください" />
+						</td>
+					</tr>
+					<tr>
+						<th>地域<span>※</span></th>
 						<td><select name="pref" style="">
 								<option value="${f:h(live.pref)}" selected="selected">${f:h(live.pref)}</option>
 								<option value="">--</option>
@@ -148,17 +153,19 @@
 								<option value="宮崎県">宮崎県</option>
 								<option value="鹿児島県">鹿児島県</option>
 								<option value="沖縄県">沖縄県</option>
-						</select>
+						</select></td>
+					</tr>
+					<tr>
+						<th><label for="livePlace">ライブ会場</label>
+						</th>
+						<td><input type="text" name="livePlace" id="livePlace"
+							value="${f:h(live.livePlace)}" size="60" class="required"
+							title="入力してください" />
 						</td>
 					</tr>
 					<tr>
-						<th><label for="livePlace">ライブ会場</label></th>
-						<td><input type="text" name="livePlace" id="livePlace"
-							value="${f:h(live.livePlace)}" size="60" class="required"
-							title="入力してください" /></td>
-					</tr>
-					<tr>
-						<th><label for="start_year">開催日</label><span>※</span></th>
+						<th><label for="start_year">開催日</label><span>※</span>
+						</th>
 						<td><select name="start_year" style="">
 								<option value="">--</option>
 								<option label="2010" value="2010">2010</option>
@@ -209,8 +216,7 @@
 						</select>分</td>
 					</tr>
 					<tr>
-						<th>開演時間<span>※</span>
-						</th>
+						<th>開演時間<span>※</span></th>
 						<td><select name="start_hour" style="">
 								<fmt:formatDate var="start_hour" value="${live.liveStartDate}"
 									pattern="hh" />
@@ -230,7 +236,8 @@
 						</select>分</td>
 					</tr>
 					<tr>
-						<th>終了時間<span></span></th>
+						<th>終了時間<span></span>
+						</th>
 						<td><select name="end_hour" style="">
 								<fmt:formatDate var="end_hour" value="${live.liveEndDate}"
 									pattern="hh" />
@@ -254,7 +261,8 @@
 						</select>分</td>
 					</tr>
 					<tr>
-						<th><label for="charge">料金</label></th>
+						<th><label for="charge">料金</label>
+						</th>
 						<td><c:choose>
 								<c:when test="${empty live.advanceCharge}">
 									前売 ￥<input type="text" name="advanceCharge" id="charge"
@@ -267,10 +275,12 @@
 									<br />
 								</c:otherwise>
 							</c:choose> 当日 ￥<input type="text" name="todayCharge" id="charge"
-							value="${live.todayCharge}" size="20" /></td>
+							value="${live.todayCharge}" size="20" />
+						</td>
 					</tr>
 					<tr>
-						<th><label for="note">説明</label></th>
+						<th><label for="note">説明</label>
+						</th>
 						<td><textarea name="note" id="note" rows="7" cols="46">${live.note}</textarea>
 						</td>
 					</tr>
@@ -278,6 +288,8 @@
 			</div>
 			<input type="submit" value="ライブ情報更新" />
 		</form>
-		<div id="back_link"><a href="/livelove/viewLiveDetail?key=${f:h(live.key)}">ライブ詳細に戻る</a></div>
+		<div id="back_link">
+			<a href="/livelove/viewLiveDetail?key=${f:h(live.key)}">ライブ詳細に戻る</a>
+		</div>
 	</c:param>
 </c:import>

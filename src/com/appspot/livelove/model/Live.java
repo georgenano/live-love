@@ -2,8 +2,8 @@ package com.appspot.livelove.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
+import com.appspot.livelove.meta.ArtistLiveMeta;
 import com.appspot.livelove.meta.LiveCommentMeta;
 import com.appspot.livelove.meta.UserAccountLiveMeta;
 import com.google.appengine.api.datastore.Key;
@@ -26,7 +26,12 @@ public class Live implements Serializable {
 
     private String liveName;
 
-    private List<String> artists;
+    @Attribute(persistent = false)
+    private InverseModelListRef<ArtistLive, Live> artistLiveListRef =
+        new InverseModelListRef<ArtistLive, Live>(
+            ArtistLive.class,
+            ArtistLiveMeta.get().liveRef.getName(),
+            this);
 
     private String pref;
 
@@ -53,6 +58,7 @@ public class Live implements Serializable {
             LiveCommentMeta.get().targetLiveRef.getName(),
             this);
 
+    // ÉâÉCÉuéQêÌó\íË
     @Attribute(persistent = false)
     private InverseModelListRef<UserAccountLive, Live> userAccountLiveListRef =
         new InverseModelListRef<UserAccountLive, Live>(
@@ -118,12 +124,8 @@ public class Live implements Serializable {
         this.liveName = liveName;
     }
 
-    public List<String> getArtists() {
-        return artists;
-    }
-
-    public void setArtists(List<String> artists) {
-        this.artists = artists;
+    public InverseModelListRef<ArtistLive, Live> getArtistLiveListRef() {
+        return artistLiveListRef;
     }
 
     public String getPref() {

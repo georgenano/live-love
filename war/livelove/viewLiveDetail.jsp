@@ -22,8 +22,8 @@
 					</tr>
 					<tr>
 						<th>出演アーティスト</th>
-						<td><c:forEach var="artist" items="${live.artists}">
-							 ${f:h(artist)}
+						<td><c:forEach var="artist" items="${joinArtistList}">
+							 ${f:h(artist.artistRef.model.name)}
 						</c:forEach></td>
 					</tr>
 					<tr>

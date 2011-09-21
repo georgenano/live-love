@@ -1,14 +1,11 @@
 package com.appspot.livelove.meta;
 
-//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2011-09-19 21:34:58")
+//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2011-09-19 22:54:08")
 /** */
 public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.livelove.model.Live> {
 
     /** */
     public final org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Integer> advanceCharge = new org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Integer>(this, "advanceCharge", "advanceCharge", java.lang.Integer.class);
-
-    /** */
-    public final org.slim3.datastore.StringCollectionAttributeMeta<com.appspot.livelove.model.Live, java.util.List<java.lang.String>> artists = new org.slim3.datastore.StringCollectionAttributeMeta<com.appspot.livelove.model.Live, java.util.List<java.lang.String>>(this, "artists", "artists", java.util.List.class);
 
     /** */
     public final org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Boolean> deleted = new org.slim3.datastore.CoreAttributeMeta<com.appspot.livelove.model.Live, java.lang.Boolean>(this, "deleted", "deleted", boolean.class);
@@ -76,7 +73,6 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
     public com.appspot.livelove.model.Live entityToModel(com.google.appengine.api.datastore.Entity entity) {
         com.appspot.livelove.model.Live model = new com.appspot.livelove.model.Live();
         model.setAdvanceCharge(longToInteger((java.lang.Long) entity.getProperty("advanceCharge")));
-        model.setArtists(toList(java.lang.String.class, entity.getProperty("artists")));
         model.setDeleted(booleanToPrimitiveBoolean((java.lang.Boolean) entity.getProperty("deleted")));
         model.setIncludeDrink(booleanToPrimitiveBoolean((java.lang.Boolean) entity.getProperty("includeDrink")));
         model.setKey(entity.getKey());
@@ -112,7 +108,6 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
             entity = new com.google.appengine.api.datastore.Entity(kind);
         }
         entity.setProperty("advanceCharge", m.getAdvanceCharge());
-        entity.setProperty("artists", m.getArtists());
         entity.setProperty("deleted", m.isDeleted());
         entity.setProperty("includeDrink", m.isIncludeDrink());
         entity.setProperty("lastUpdateDate", m.getLastUpdateDate());
@@ -205,13 +200,9 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
             writer.setNextPropertyName("advanceCharge");
             encoder0.encode(writer, m.getAdvanceCharge());
         }
-        if(m.getArtists() != null){
-            writer.setNextPropertyName("artists");
-            writer.beginArray();
-            for(java.lang.String v : m.getArtists()){
-                encoder0.encode(writer, v);
-            }
-            writer.endArray();
+        if(m.getArtistLiveListRef() != null){
+            writer.setNextPropertyName("artistLiveListRef");
+            encoder0.encode(writer, m.getArtistLiveListRef());
         }
         writer.setNextPropertyName("deleted");
         encoder0.encode(writer, m.isDeleted());
@@ -291,23 +282,7 @@ public final class LiveMeta extends org.slim3.datastore.ModelMeta<com.appspot.li
         org.slim3.datastore.json.Default decoder0 = new org.slim3.datastore.json.Default();
         reader = rootReader.newObjectReader("advanceCharge");
         m.setAdvanceCharge(decoder0.decode(reader, m.getAdvanceCharge()));
-        reader = rootReader.newObjectReader("artists");
-        {
-            java.util.ArrayList<java.lang.String> elements = new java.util.ArrayList<java.lang.String>();
-            org.slim3.datastore.json.JsonArrayReader r = rootReader.newArrayReader("artists");
-            if(r != null){
-                reader = r;
-                int n = r.length();
-                for(int i = 0; i < n; i++){
-                    r.setIndex(i);
-                    java.lang.String v = decoder0.decode(reader, (java.lang.String)null)                    ;
-                    if(v != null){
-                        elements.add(v);
-                    }
-                }
-                m.setArtists(elements);
-            }
-        }
+        reader = rootReader.newObjectReader("artistLiveListRef");
         reader = rootReader.newObjectReader("deleted");
         m.setDeleted(decoder0.decode(reader, m.isDeleted()));
         reader = rootReader.newObjectReader("includeDrink");
